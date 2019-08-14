@@ -39,7 +39,7 @@ dependencies {
 
     implementation androidXDependencies.appcompat
     implementation moxyDependencies.core
-    implementation moxyDependencies.kapt
+//    implementation moxyDependencies.kapt
     implementation kotlinDependencies.jdk
     implementation kotlinDependencies.coroutines
 //    implementation koinDependencies.core
