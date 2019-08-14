@@ -1,0 +1,68 @@
+ext {
+    appCompatXVersion = '1.0.2'
+    constraintLayoutXVersion = '2.0.0-alpha2'
+    materialXVersion = '1.1.0-alpha01'
+    androidXDependencies = [
+            appcompat : "androidx.appcompat:appcompat:$appCompatXVersion",
+            constraint: "androidx.constraintlayout:constraintlayout:$constraintLayoutXVersion",
+            material  : "com.google.android.material:material:$materialXVersion"
+    ]
+
+    //Moxy
+    moxyVersion = '1.5.6'
+    moxyDependencies = [
+            core     : "com.arello-mobile:moxy:$moxyVersion",
+            kapt     : "com.arello-mobile:moxy-compiler:$moxyVersion",
+            appCompat: "com.arello-mobile:moxy-app-compat:$moxyVersion"
+    ]
+
+    //Rx
+    rxJavaVersion = '2.2.11'
+    rxAndroidVersion = '2.1.1'
+    rxKotlinVersion = '2.4.0'
+    rxDependencies = [
+            java   : "io.reactivex.rxjava2:rxjava:$rxJavaVersion",
+            android: "io.reactivex.rxjava2:rxandroid:$rxAndroidVersion",
+            kotlin : "io.reactivex.rxjava2:rxkotlin:$rxKotlinVersion"
+    ]
+
+    //Retrofit
+    retrofitVersion = '2.6.0'
+    httploggerVersion = '3.12.0'
+    retrofitDependencies = [
+            core         : "com.squareup.retrofit2:retrofit:$retrofitVersion",
+            logger          : "com.squareup.okhttp3:logging-interceptor:$httploggerVersion",
+            gsonConverter: "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+    ]
+
+    //utils
+    utilsDependencies = [
+            cameraView: 'com.otaliastudios:cameraview:1.6.0',
+            inputMask : 'com.redmadrobot:inputmask:3.4.4',
+    ]
+
+    //kotlin
+    coroutines = '1.1.1'
+    kotlinDependencies = [
+            jdk: "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version",
+            coroutines: "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines"
+    ]
+
+    //ui
+    uiDependencies = [
+            numberPicker: "com.shawnlin:number-picker:2.4.4"
+    ]
+
+    koin_version = '2.0.1'
+    koinScopeVersion = '2.0.0-rc-2'
+    koinDependencies = [
+            "core"         : "org.koin:koin-core:$koin_version",
+            "exts"         : "org.koin:koin-core-ext:$koin_version",
+            "android"      : "org.koin:koin-android:$koin_version",
+            "androidScopes": "org.koin:koin-android-scope:$koin_version",
+            "androidExts"  : "org.koin:koin-android-ext:$koin_version"
+    ]
+
+
+
+}

@@ -1,4 +1,7 @@
 apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 29
@@ -25,10 +28,25 @@ android {
 }
 
 dependencies {
+
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation 'androidx.appcompat:appcompat:1.0.2'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    implementation "androidx.core:core-ktx:+"
+
+    implementation androidXDependencies.appcompat
+    implementation moxyDependencies.core
+    implementation moxyDependencies.kapt
+    implementation kotlinDependencies.jdk
+    implementation kotlinDependencies.coroutines
+//    implementation koinDependencies.core
+//    implementation koinDependencies.exts
+//    implementation koinDependencies.android
+//    implementation koinDependencies.androidScopes
+//    implementation koinDependencies.androidExts
+
+
 }
