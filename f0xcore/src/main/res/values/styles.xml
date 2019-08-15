@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Base application theme. -->
+    <style name="CoreAppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/core_primary_color</item>
+        <item name="colorPrimaryDark">@color/core_secondary_color</item>
+    </style>
+
+    <style name="CoreAppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
+
+    <style name="BaseButton" parent="@style/Base.Widget.AppCompat.Button">
+        <item name="android:textSize">@dimen/core_button_text_size</item>
+        <item name="android:textColor">@color/core_button_text_color</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:padding">@dimen/core_button_padding</item>
+    </style>
+
+    <style name="BaseButton.Primary">
+        <item name="android:background">@drawable/bg_button_primary</item>
+        <item name="android:layout_margin">6dp</item>
+    </style>
+
+    <style name="BaseButton.Secondary">
+        <item name="android:background">@drawable/bg_button_secondary</item>
+        <item name="android:layout_margin">6dp</item>
+    </style>
+
+    <style name="BaseBorderlessButton" parent="@style/Widget.AppCompat.Button.Borderless">
+        <item name="android:textColor">@color/core_primary_color</item>
+    </style>
+
+    <style name="CoreText" parent="TextAppearance.AppCompat"/>
+
+    <style name="CoreText.Small">
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="CoreText.Medium">
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="CoreText.Large">
+        <item name="android:textSize">30sp</item>
+    </style>
+
+    <style name="CoreText.ExtraLarge">
+        <item name="android:textSize">44sp</item>
+    </style>
+
+    <style name="CoreFontRegular">
+        <item name="android:fontFamily" tools:targetApi="jelly_bean">@font/roboto_regular</item>
+    </style>
+
+    <style name="CoreFontMedium">
+        <item name="android:fontFamily" tools:targetApi="jelly_bean">@font/roboto_medium</item>
+    </style>
+
+    <style name="CoreFontBold">
+        <item name="android:fontFamily" tools:targetApi="jelly_bean">@font/roboto_bold</item>
+    </style>
+
+    <style name="CoreFontBold.16sp">
+        <item name="android:textSize">16sp</item>
+
+    </style>
+
+    <style name="CoreFontRegular.16sp">
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="EditTextError" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">0.0001dp</item>
+        <item name="android:textColor">@color/core_error_color</item>
+    </style>
+
+
+    <style name="CustomDataPicker">
+        <item name="android:minHeight">30sp</item>
+        <item name="np_selectedTextColor">@android:color/white</item>
+        <item name="np_selectedTextSize">30sp</item>
+        <item name="np_textColor">@color/core_primary_light_color</item>
+        <item name="np_textSize">25sp</item>
+        <item name="np_wheelItemCount">5</item>
+        <item name="np_dividerThickness">0dp</item>
+    </style>
+
+    <declare-styleable name="NumberPicker">
+        <attr name="np_font_style" format="string"/>
+    </declare-styleable>
+
+    <style name="CustomObjectPicker">
+        <item name="android:minHeight">30sp</item>
+        <item name="np_selectedTextColor">@android:color/white</item>
+        <item name="np_selectedTextSize">25sp</item>
+        <item name="np_textColor">@color/core_primary_light_color</item>
+        <item name="np_textSize">20sp</item>
+        <item name="np_wheelItemCount">5</item>
+        <item name="np_dividerThickness">0dp</item>
+    </style>
+
+    <style name="SpinnerItemStyle">
+        <item name="android:ellipsize">marquee</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:gravity">center_vertical|left</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/core_text_primary_color</item>
+        <item name="android:paddingStart">8dp</item>
+        <item name="android:paddingEnd">8dp</item>
+        <item name="android:paddingLeft">8dp</item>
+        <item name="android:paddingRight">8dp</item>
+        <item name="android:layout_height">@dimen/spinner_item_height</item>
+    </style>
+
+</resources>

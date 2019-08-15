@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="InputEditText">
+        <attr name="mask" format="string"/>
+        <attr name="description" format="string"/>
+        <attr name="startPrefix" format="string"/>
+    </declare-styleable>
+
+    <declare-styleable name="CommonAttrs">
+        <attr name="field_key" format="string"/>
+        <attr name="validation" format="string"/>
+    </declare-styleable>
+</resources>

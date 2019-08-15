@@ -1,3 +1,46 @@
 <resources>
     <string name="app_name">f0xcore</string>
+    <string name="ok">OK</string>
+    <!--days-->
+    <string name="day_designation_1">day</string>
+    <string name="day_designation_2">days</string>
+    <string name="day_designation_3">days</string>
+    <string name="file_format_not_supported">The file format is not supported.</string>
+    <string name="error_network">Network error</string>
+    <string name="core_date_picker_button_text">OK</string>
+
+    <string name="validation_error_between">The value must be between %s and %s</string>
+    <string name="validation_error_between_wrong_format">Wrong format</string>
+    <string name="validation_error_integer">Non-numeric value</string>
+    <string name="validation_error_min">Minimum length %s character(s)</string>
+    <string name="validation_error_regex">Wrong format</string>
+    <string name="validation_error_required">Value can not be empty</string>
+    <string name="validation_error_required_without">Value can not be empty</string>
+    <string name="validation_error_required_if">Value can not be empty</string>
+    <string name="validation_error_same">Must match the field"</string>
+    <string name="validation_error_max">Maximum length %s character(s)</string>
+    <string name="validation_error_digits">A number is required</string>
+    <string name="validation_error_digits_wrong_length">The length must be %s character(s)</string>
+    <string name="validation_error_email">Wrong email format</string>
+    <string name="validation_error_checked">Incorrect value</string>
+
+    <string name="loading_dialog_message">Please wait…</string>
+
+    <string name="backend_error_message_500">Oops, something went wrong. Try again later</string>
+    <string name="download_started">download started</string>
+
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+
+    <string name="cabinet_exit_dialog_text">Are you sure you want to close the application?</string>
+
+    <!--change language-->
+    <string name="choose_language_title">Choose Language</string>
+    <string name="choose_language_positive_button_text">I agree</string>
+    <string name="choose_language_negative_button_text">Cancel</string>
+
+    <string name="empty_list_text">Empty list</string>
+    <string name="unknown_error_text">Unknown error</string>
+    <string name="network_error_text">Network error</string>
+    <string name="error_something_went_wrong">Something went wrong, try later</string>
 </resources>

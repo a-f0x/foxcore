@@ -36,12 +36,26 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
     implementation "androidx.core:core-ktx:+"
+    implementation kotlinDependencies.jdk
 
     implementation androidXDependencies.appcompat
+    implementation androidXDependencies.material
+    implementation androidXDependencies.constraint
+    implementation uiDependencies.numberPicker
+
     implementation moxyDependencies.core
 //    implementation moxyDependencies.kapt
-    implementation kotlinDependencies.jdk
+
+    implementation  rxDependencies.java
+    implementation  rxDependencies.android
+
     implementation kotlinDependencies.coroutines
+
+    implementation retrofitDependencies.gsonConverter
+
+
+
+
 //    implementation koinDependencies.core
 //    implementation koinDependencies.exts
 //    implementation koinDependencies.android

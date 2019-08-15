@@ -1,4 +1,4 @@
-package ru.f0xdev.f0xcore.mvp
+package ru.f0xdev.f0xcore.base.mvp
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="yellow">#FFD738</color>
+    <color name="yellow_light">#fff0c2</color>
+    <color name="yellow_medium_light">#FFEF99</color>
+    <color name="yellow_dark">#d1ac07</color>
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="white_almost">#eff1f1</color>
+    <color name="green_main">#00966A</color>
+    <color name="green_main_dark">#017855</color>
+    <color name="green_main_trans">#2200966A</color>
+    <color name="green_light">#BEE48D</color>
+    <color name="gray">#7d8888</color>
+    <color name="gray_super_light">#dedede</color>
+    <color name="gray_light">#afb6b9</color>
+    <color name="gray_dark">#4b5959</color>
+    <color name="red">#ff0000</color>
+
+    <color name="core_primary_color">#a2b3ff</color>
+    <color name="core_primary_color_trans">#2200966A</color>
+    <color name="core_primary_dark_color">#273180</color>
+    <color name="core_primary_light_color">#8dd7e4</color>
+    <color name="core_secondary_color">#766857</color>
+    <color name="core_secondary_dark_color">#4b3419</color>
+    <color name="core_disabled_color">@color/gray_light</color>
+
+    <color name="core_text_primary_color">@color/gray_dark</color>
+    <color name="core_text_secondary_color">@color/gray</color>
+    <color name="core_button_text_color">@color/white</color>
+    <color name="core_button_bg_disabled_color">@color/core_disabled_color</color>
+    <color name="core_divider_color">@color/gray_super_light</color>
+    <color name="core_error_color">@color/red</color>
+    <color name="core_windows_background_color">@color/white</color>
+    <color name="core_date_picker_button_border">@color/core_primary_light_color</color>
+    <color name="core_date_picker_button_border_disabled">@color/core_disabled_color</color>
+
+    <color name="button_yellow_pressed">@color/yellow_dark</color>
+    <color name="button_yellow_disabled">@color/yellow_medium_light</color>
+    <color name="button_yellow_normal">@color/yellow</color>
+
+</resources>

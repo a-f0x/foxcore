@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              style="@style/Widget.Design.TextInputLayout"
+              android:layout_width="match_parent"
+              android:layout_height="?android:attr/listPreferredItemHeight"
+              android:animateLayoutChanges="false"
+              android:gravity="center_vertical"
+              android:orientation="vertical"
+              android:paddingLeft="4dp"
+              android:paddingStart="4dp"
+>
+
+    <TextView
+            android:id="@android:id/text1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="28dp"
+            android:maxLines="2"
+            android:paddingLeft="8dp"
+            android:textAppearance="?android:attr/textAppearanceLargePopupMenu"
+            android:textSize="18sp"
+            tools:text="Some text"
+            android:layout_marginEnd="28dp"
+            android:paddingStart="8dp"
+    />
+
+    <TextView
+            android:id="@+id/errorView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="4dp"
+            android:textColor="@color/core_error_color"
+            android:visibility="gone"
+            tools:text="Some Error"
+            tools:visibility="visible"/>
+
+</LinearLayout>
