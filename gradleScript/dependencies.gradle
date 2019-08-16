@@ -35,12 +35,6 @@ ext {
             gsonConverter: "com.squareup.retrofit2:converter-gson:$retrofitVersion"
     ]
 
-    //utils
-    utilsDependencies = [
-            cameraView: 'com.otaliastudios:cameraview:1.6.0',
-            inputMask : 'com.redmadrobot:inputmask:3.4.4',
-    ]
-
     //kotlin
     coroutines = '1.1.1'
     kotlinDependencies = [
@@ -50,7 +44,10 @@ ext {
 
     //ui
     uiDependencies = [
-            numberPicker: "com.shawnlin:number-picker:2.4.4"
+            numberPicker: "com.shawnlin:number-picker:2.4.4",
+            cameraView: 'com.otaliastudios:cameraview:1.6.0',
+            inputMask : 'com.redmadrobot:inputmask:3.4.4',
+
     ]
 
     koin_version = '2.0.1'

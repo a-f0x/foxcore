@@ -42,6 +42,7 @@ dependencies {
     implementation androidXDependencies.material
     implementation androidXDependencies.constraint
     implementation uiDependencies.numberPicker
+    implementation uiDependencies.inputMask
 
     implementation moxyDependencies.core
 //    implementation moxyDependencies.kapt
