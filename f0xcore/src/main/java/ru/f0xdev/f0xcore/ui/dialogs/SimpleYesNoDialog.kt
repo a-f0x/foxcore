@@ -80,12 +80,12 @@ class SimpleYesNoDialog : DialogFragment() {
             builder.setMessage(messageText)
                 .setPositiveButton(positiveButtonResId) { dialog, _ ->
                     dialog.dismiss()
-                    onClickListener?.onClick(view)
+                    onActionClick?.invoke(true)
                 }
             if (!isOneButton) {
                 builder.setNegativeButton(negativeButtonResId) { dialog, _ ->
                     dialog.dismiss()
-                    onNegativeClickListener?.onClick(view)
+                    onActionClick?.invoke(false)
                 }
             }
 

@@ -43,4 +43,6 @@
     <string name="unknown_error_text">Unknown error</string>
     <string name="network_error_text">Network error</string>
     <string name="error_something_went_wrong">Something went wrong, try later</string>
+
+    <string name="account_type">fox_core_accotunt</string>
 </resources>

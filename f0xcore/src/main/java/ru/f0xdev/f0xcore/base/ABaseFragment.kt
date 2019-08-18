@@ -6,7 +6,6 @@ import android.view.View
 import androidx.annotation.StringRes
 import ru.f0xdev.f0xcore.R
 import ru.f0xdev.f0xcore.base.mvp.MvpAppCompatFragment
-import ru.f0xdev.f0xcore.ui.ExtendedToolBar
 import ru.f0xdev.f0xcore.util.hideKeyboard
 import ru.f0xdev.f0xcore.util.visible
 
@@ -17,11 +16,6 @@ abstract class ABaseFragment : MvpAppCompatFragment(), BaseView {
     override fun onCreate(savedInstanceState: Bundle?) {
         fragmentContext = context ?: throw IllegalStateException("Context is null for ${javaClass.canonicalName} $this")
         super.onCreate(savedInstanceState)
-        activity?.let {
-            if (it is ExtendedToolBar) {
-                it.removeToolbarView()
-            }
-        }
     }
 
     fun setTitle(titleId: Int) {

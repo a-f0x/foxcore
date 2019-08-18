@@ -5,12 +5,16 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
+import kotlinx.coroutines.delay
 import ru.f0xdev.f0xcore.ui.inputvalidation.InputValidationError
 import ru.f0xdev.f0xcore.ui.inputvalidation.views.ValidatableInput
 
@@ -147,4 +151,72 @@ inline fun <reified T> SharedPreferences.put(key: String, value: T): T {
 
     editor.commit()
     return value
+}
+
+/**
+ * Эта функция выполняет блок пока не истечет количество попыток
+ * по истечению количества попыток будет возвращено дефолтовое значение
+ *
+ * @param times             - количество попыток выполнения блока
+ * @param initialDelay      - стартовое значение задержки перед следующим выполнением блока
+ * @param maxDelay          - максимальное время задержки между вызовами блока
+ * @param factor            - фактор увеличения задержки
+ * @param block             - суспенд функция которая будет выполнятся
+ * @param defaultValue      - дефолтовое значение которое надо вернуть если за заданное количестов попыток  функция не отработала корректно
+ * @param retryExceptionClass    - тот эксепшен который нужно игнорировать и повторять отложенный вызов функции.
+ *                              Если функция выбросит какой либо другой ексепшен то он будет проброшен наверх
+ *
+ * P.S. Использовать эту функцию и генерировать эксепшен самому что бы что то повторить не очень варик на самом деле, потому что
+ * генерация эксепшенов и их отлов довольно затратны на рантайме, но рефакторить будем когда это реально принесет проблемы.
+ *
+ * */
+suspend fun <T, E : Throwable> retryException(
+    times: Int = Int.MAX_VALUE,
+    initialDelay: Long = 200,
+    maxDelay: Long = 1500,
+    factor: Double = 2.0,
+    block: suspend () -> T?,
+    defaultValue: T? = null,
+    retryExceptionClass: Class<E>
+): T? {
+    var currentDelay = initialDelay
+    repeat(times - 1) {
+        try {
+            return block()
+        } catch (e: Exception) {
+            if (e.javaClass != retryExceptionClass) {
+                throw e
+            }
+        }
+        delay(currentDelay)
+        currentDelay = (currentDelay * factor).toLong().coerceAtMost(maxDelay)
+    }
+    return defaultValue
+}
+
+
+inline fun <reified T> Gson.fromJsonTyped(json: String): T {
+    return this.fromJson<T>(json, object : TypeToken<T>() {}.type)
+}
+
+
+fun Any?.getTagForLogging(): String {
+    this ?: return "Null object"
+    val name = this.javaClass.simpleName
+    if (name.length > 23)
+        return name.substring(0..21)
+    return name
+
+}
+
+fun Any?.logInfo(info: String) {
+    Log.i(getTagForLogging(), info)
+}
+
+fun Any?.logDebug(debug: String, throwable: Throwable?) {
+    Log.d(getTagForLogging(), debug, throwable)
+}
+
+fun Any?.logWarn(warn: String) {
+    Log.w(getTagForLogging(), warn)
 }

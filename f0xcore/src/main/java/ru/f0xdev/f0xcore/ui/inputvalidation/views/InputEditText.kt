@@ -10,13 +10,13 @@ import android.text.TextUtils
 import android.text.TextWatcher
 import android.util.AttributeSet
 import android.view.MotionEvent
-import android.view.View
 import android.widget.EditText
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.FragmentManager
 import com.google.android.material.textfield.TextInputLayout
 import com.redmadrobot.inputmask.MaskedTextChangedListener
 import ru.f0xdev.f0xcore.R
+import ru.f0xdev.f0xcore.ui.dialogs.SimpleYesNoDialog
 import ru.f0xdev.f0xcore.ui.inputvalidation.InputValidationError
 import ru.f0xdev.f0xcore.ui.inputvalidation.buildValidationRules
 import ru.f0xdev.f0xcore.ui.inputvalidation.rules.InputValidationRule
@@ -171,7 +171,6 @@ class InputEditText : EditText, ValidatableInput {
                             positiveButtonResId = R.string.ok,
                             oneButton = true
                         )
-                        signBreakDialog.onClickListener = View.OnClickListener {}
                         signBreakDialog.show(fragmentManager, "")
                     }
                 }
@@ -359,7 +358,7 @@ class InputEditText : EditText, ValidatableInput {
 
     override val validationRules: List<InputValidationRule> by lazy { buildValidationRules(validation) }
 
-    override val validationErrors: MutableList<InputValidationError> by lazy { mutableListOf() }
+    override val validationErrors: MutableList<InputValidationError> by lazy { mutableListOf<InputValidationError>() }
 
     override var fieldKey: String? = null
 
