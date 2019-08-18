@@ -17,6 +17,7 @@ import com.google.gson.reflect.TypeToken
 import kotlinx.coroutines.delay
 import ru.f0xdev.f0xcore.ui.inputvalidation.InputValidationError
 import ru.f0xdev.f0xcore.ui.inputvalidation.views.ValidatableInput
+import java.lang.reflect.InvocationTargetException
 
 fun View.visible(visible: Boolean) {
     this.visibility = if (visible) View.VISIBLE else View.GONE
@@ -220,3 +221,23 @@ fun Any?.logDebug(debug: String, throwable: Throwable?) {
 fun Any?.logWarn(warn: String) {
     Log.w(getTagForLogging(), warn)
 }
+
+fun Any.logError(error: String, throwable: Throwable?) {
+    Log.e(getTagForLogging(), error, throwable)
+}
+
+
+fun Any.isLateinitPropertyInitialized(lateinitFieldName: String): Boolean {
+    val prop = javaClass.kotlin.members.firstOrNull { it.name == lateinitFieldName }
+    checkNotNull(prop) { "Field not found!" }
+    return try {
+        prop.call(this)
+        true
+    } catch (ex: InvocationTargetException) {
+        if (ex.targetException is UninitializedPropertyAccessException)
+            return false
+        else
+            throw ex
+    }
+}
+

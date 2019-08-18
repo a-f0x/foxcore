@@ -173,6 +173,8 @@ class InputEditText : EditText, ValidatableInput {
                         )
                         signBreakDialog.show(fragmentManager, "")
                     }
+                    else -> {
+                    }
                 }
             }
         })

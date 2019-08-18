@@ -2,10 +2,12 @@ ext {
     appCompatXVersion = '1.0.2'
     constraintLayoutXVersion = '2.0.0-alpha2'
     materialXVersion = '1.1.0-alpha01'
+    ktxVersion = '1.0.2'
     androidXDependencies = [
             appcompat : "androidx.appcompat:appcompat:$appCompatXVersion",
             constraint: "androidx.constraintlayout:constraintlayout:$constraintLayoutXVersion",
-            material  : "com.google.android.material:material:$materialXVersion"
+            material  : "com.google.android.material:material:$materialXVersion",
+            "ktx": "androidx.core:core-ktx:$ktxVersion"
     ]
 
     //Moxy
@@ -31,22 +33,23 @@ ext {
     httploggerVersion = '3.12.0'
     retrofitDependencies = [
             core         : "com.squareup.retrofit2:retrofit:$retrofitVersion",
-            logger          : "com.squareup.okhttp3:logging-interceptor:$httploggerVersion",
+            logger       : "com.squareup.okhttp3:logging-interceptor:$httploggerVersion",
             gsonConverter: "com.squareup.retrofit2:converter-gson:$retrofitVersion"
     ]
 
     //kotlin
     coroutines = '1.1.1'
     kotlinDependencies = [
-            jdk: "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version",
-            coroutines: "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines"
+            jdk       : "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version",
+            coroutines: "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines",
+            reflection: "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
     ]
 
     //ui
     uiDependencies = [
             numberPicker: "com.shawnlin:number-picker:2.4.4",
-            cameraView: 'com.otaliastudios:cameraview:1.6.0',
-            inputMask : 'com.redmadrobot:inputmask:3.4.4',
+            cameraView  : 'com.otaliastudios:cameraview:1.6.0',
+            inputMask   : 'com.redmadrobot:inputmask:3.4.4',
 
     ]
 
@@ -59,7 +62,6 @@ ext {
             "androidScopes": "org.koin:koin-android-scope:$koin_version",
             "androidExts"  : "org.koin:koin-android-ext:$koin_version"
     ]
-
 
 
 }
