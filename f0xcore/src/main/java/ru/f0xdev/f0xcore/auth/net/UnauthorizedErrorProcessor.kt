@@ -28,8 +28,9 @@ class UnauthorizedErrorProcessor(
             } catch (aue: AuthException) {
                 processAuthException(aue)
                 return false
+            } finally {
+                lock.unlock()
             }
-            lock.unlock()
         }
         lock.lock()
         lock.unlock()

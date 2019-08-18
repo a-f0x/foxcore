@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">AppCoreExample</string>
+    <string name="account_type">reqres.in</string>
+
 </resources>

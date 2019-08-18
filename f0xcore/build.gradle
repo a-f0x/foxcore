@@ -61,7 +61,6 @@ dependencies {
     implementation uiDependencies.inputMask
 
     implementation moxyDependencies.core
-//    implementation moxyDependencies.kapt
 
     implementation kotlinDependencies.jdk
     implementation kotlinDependencies.coroutines

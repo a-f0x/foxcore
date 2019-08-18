@@ -17,6 +17,7 @@ class AuthManager(
     private val cryptographer: ITokenCryptographer
 ) : IAuthManager {
 
+    @SuppressLint("MissingPermission")
     override fun getAuthType(): String? {
         getAccount()?.let { acc ->
             return accountManager.getUserData(acc, AccountAuthenticator.AUTH_TOKEN_TYPE_KEY)
@@ -84,12 +85,14 @@ class AuthManager(
     }
 
 
+    @SuppressLint("MissingPermission")
     override fun isAuthenticated(): Boolean {
         val acc = getAccount() ?: return false
         val token = accountManager.peekAuthToken(acc, TOKEN_TYPE)
         return token != null
     }
 
+    @SuppressLint("MissingPermission")
     @Synchronized
     override fun setAccessToken(accessToken: AccessToken) {
         val account = getAccountOrCreate()
@@ -132,6 +135,7 @@ class AuthManager(
         return getAccount() ?: addAccount(config.accountName, config.accountType)
     }
 
+    @SuppressLint("MissingPermission")
     private fun addAccount(accountName: String, accountType: String): Account {
         val createAccountTime = "key${Date().time}"
         val account = Account(accountName, accountType)
@@ -162,6 +166,7 @@ class AuthManager(
         }
     }
 
+    @SuppressLint("MissingPermission")
     private fun getCachedToken(): String? {
         val acc = getAccount()
         if (acc != null) {

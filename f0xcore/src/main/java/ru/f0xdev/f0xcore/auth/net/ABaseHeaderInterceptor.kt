@@ -3,18 +3,10 @@ package ru.f0xdev.f0xcore.auth.net
 import okhttp3.Interceptor
 import okhttp3.Request
 import okhttp3.Response
-import ru.f0xdev.f0xcore.auth.IAuthManager
 
 abstract class ABaseHeaderInterceptor(
-    protected val authManager: IAuthManager,
-    var errorProcessors: Map<Int, IResponseErrorProcessor>,
-    protected val apiKey: String?
-
+    var errorProcessors: Map<Int, IResponseErrorProcessor>
 ) : Interceptor {
-
-    companion object {
-        internal const val HEADER_AUTH_KEY = "Authorization"
-    }
 
 
     override fun intercept(chain: Interceptor.Chain): Response {
@@ -32,31 +24,15 @@ abstract class ABaseHeaderInterceptor(
         return response
     }
 
-
     private fun proceedRequest(chain: Interceptor.Chain, request: Request): Response {
         return chain.proceed(
-            addAdditionalHeaders(addTokenInHeader(request))
+            addAdditionalHeaders(request.newBuilder())
                 .build()
         )
     }
 
-    private fun addTokenInHeader(request: Request): Request.Builder {
-        val builder = request.newBuilder()
-        if (authManager.isAuthenticated()) {
-            val authType = authManager.getAuthType()
-            if (authType != null)
-                builder.addHeader(HEADER_AUTH_KEY, "$authType ${authManager.getToken()}")
-            else
-                builder.addHeader(HEADER_AUTH_KEY, authManager.getToken())
-        } else {
-            if (apiKey != null)
-                builder.addHeader(HEADER_AUTH_KEY, apiKey)
-        }
-        return builder
-    }
-
     /**
-     * В этом методе необходимо добавить какие то дополнительные хедеры
+     * В этом методе возможно добавление дополнительных хедереров
      *
      * */
     abstract fun addAdditionalHeaders(builder: Request.Builder): Request.Builder

@@ -3,6 +3,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 29
@@ -35,4 +36,34 @@ dependencies {
     implementation 'androidx.multidex:multidex:2.0.1'
 
     implementation project(path: ':f0xcore')
+
+    implementation androidXDependencies.ktx
+    implementation androidXDependencies.appcompat
+    implementation androidXDependencies.material
+    implementation androidXDependencies.constraint
+    implementation uiDependencies.numberPicker
+    implementation uiDependencies.inputMask
+
+    implementation moxyDependencies.core
+    kapt moxyDependencies.kapt
+
+    implementation kotlinDependencies.jdk
+    implementation kotlinDependencies.coroutines
+    implementation kotlinDependencies.reflection
+
+    implementation rxDependencies.java
+    implementation rxDependencies.android
+
+    implementation retrofitDependencies.gsonConverter
+    implementation retrofitDependencies.core
+    implementation retrofitDependencies.logger
+
+
+    implementation koinDependencies.core
+    implementation koinDependencies.exts
+    implementation koinDependencies.android
+    implementation koinDependencies.androidScopes
+    implementation koinDependencies.androidExts
+
+
 }

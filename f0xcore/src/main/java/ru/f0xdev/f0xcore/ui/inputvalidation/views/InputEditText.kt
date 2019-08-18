@@ -59,7 +59,6 @@ class InputEditText : EditText, ValidatableInput {
     var description: String = ""
     var startPrefix: String = ""
 
-    private val errors = mutableListOf<InputValidationError>()
     private var mDrawableRight: Drawable? = null
     private var mDrawableLeft: Drawable? = null
     private var mDrawableTop: Drawable? = null
@@ -68,6 +67,15 @@ class InputEditText : EditText, ValidatableInput {
     var actionX = 0
     var actionY = 0
     private lateinit var clickListener: DrawableClickListener
+
+
+    override val validationInput: String = text.toString().trim()
+
+    override val validationRules: List<InputValidationRule> by lazy { buildValidationRules(validation) }
+
+    override val validationErrors: MutableList<InputValidationError> by lazy { mutableListOf<InputValidationError>() }
+
+    override var fieldKey: String? = null
 
 
     private fun initValidation(context: Context?, attrs: AttributeSet?) {
@@ -356,13 +364,6 @@ class InputEditText : EditText, ValidatableInput {
         this.clickListener = listener
     }
 
-    override val validationInput: String = text.toString().trim()
-
-    override val validationRules: List<InputValidationRule> by lazy { buildValidationRules(validation) }
-
-    override val validationErrors: MutableList<InputValidationError> by lazy { mutableListOf<InputValidationError>() }
-
-    override var fieldKey: String? = null
 
     interface DrawableClickListener {
 
