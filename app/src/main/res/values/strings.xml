@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">AppCoreExample</string>
     <string name="account_type">reqres.in</string>
+    <string name="auth_email_hint">Email</string>
+    <string name="auth_password_hint">Password</string>
+    <string name="contine_text">Continue</string>
 
 </resources>

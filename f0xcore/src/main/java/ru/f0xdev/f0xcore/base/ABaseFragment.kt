@@ -130,6 +130,7 @@ abstract class ABaseFragment : MvpAppCompatFragment(), BaseView {
         }
     }
 
+
     private fun hideKeyboard() {
         activity?.hideKeyboard()
     }

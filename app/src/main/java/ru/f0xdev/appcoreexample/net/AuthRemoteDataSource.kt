@@ -1,6 +1,5 @@
 package ru.f0xdev.appcoreexample.net
 
-import android.util.Log
 import com.google.gson.annotations.SerializedName
 import finance.robo.android.accountservice.models.AuthException
 import retrofit2.Call
@@ -8,20 +7,19 @@ import retrofit2.http.Body
 import retrofit2.http.POST
 import ru.f0xdev.f0xcore.auth.models.AccessToken
 import ru.f0xdev.f0xcore.auth.net.IAuthRemoteDataSource
+import ru.f0xdev.f0xcore.util.logError
 import java.io.IOException
 
 class AuthRemoteDataSource(
     private val remote: AuthRemoteDataSourceRetrofit
 ) : IAuthRemoteDataSource {
-    private val tag = javaClass.simpleName
-
     override fun auth(login: String, password: String): AccessToken {
         val response = try {
             remote.auth(AuthRemoteDataSourceRetrofit.AuthByPasswordRequest(login, password))
                 .execute()
 
         } catch (ioe: IOException) {
-            Log.e(tag, "Error auth ${ioe.message}", ioe)
+            this.logError("Error auth ${ioe.message}", ioe)
             throw AuthException(AuthException.Type.NETWORK, ioe.message ?: "Network error")
         }
         if (response.isSuccessful) {
@@ -29,7 +27,6 @@ class AuthRemoteDataSource(
                 AuthException.Type.UNKNOWN_ERROR,
                 "Error get token from response"
             )
-
             return token.mapToAccessToken()
         } else {
             when (response.code()) {
