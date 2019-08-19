@@ -18,15 +18,11 @@ import ru.f0xdev.f0xcore.util.extractString
 class BorderedSpinner<T> @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : TextInputLayout(context, attrs, defStyleAttr), ValidatableInput {
-
     var selectedPosition = 0
         private set
 
-    override val validationInput: String = selectedPosition.toString()
-
     override val validationRules: List<InputValidationRule> by lazy { buildValidationRules(validation) }
     override val validationErrors: MutableList<InputValidationError>  by lazy { mutableListOf<InputValidationError>() }
-
 
     override var fieldKey: String? = null
 
@@ -103,5 +99,7 @@ class BorderedSpinner<T> @JvmOverloads constructor(
 
             }
         }
+
+    override fun getValidationValue(): String = selectedPosition.toString()
 
 }

@@ -26,6 +26,7 @@
                     android:inputType="textEmailAddress"
                     android:lines="1"
                     android:maxLength="50"
+                    android:text="eve.holt@reqres.in"
                     app:field_key="email"
                     app:validation="required|email"/>
 
@@ -42,6 +43,8 @@
                     android:hint="@string/auth_password_hint"
                     android:inputType="textPassword"
                     android:maxLength="40"
+                    android:text="cityslicka"
+                    app:field_key="password"
                     app:validation="required"/>
 
         </com.google.android.material.textfield.TextInputLayout>

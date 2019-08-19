@@ -69,8 +69,6 @@ class InputEditText : EditText, ValidatableInput {
     private lateinit var clickListener: DrawableClickListener
 
 
-    override val validationInput: String = text.toString().trim()
-
     override val validationRules: List<InputValidationRule> by lazy { buildValidationRules(validation) }
 
     override val validationErrors: MutableList<InputValidationError> by lazy { mutableListOf<InputValidationError>() }
@@ -359,6 +357,7 @@ class InputEditText : EditText, ValidatableInput {
             }
         }
 
+    override fun getValidationValue(): String = text.toString().trim()
 
     fun setDrawableClickListener(listener: DrawableClickListener) {
         this.clickListener = listener

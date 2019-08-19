@@ -4,12 +4,13 @@ import com.google.gson.Gson
 import finance.robo.android.accountservice.models.AuthException
 import retrofit2.HttpException
 import ru.f0xdev.appcoreexample.presentation.BaseErrorMapper
+import ru.f0xdev.appcoreexample.presentation.Error
 import ru.f0xdev.f0xcore.presentation.errors.ErrorConsts.VALIDATION_ERROR
 import ru.f0xdev.f0xcore.presentation.errors.IError
 import java.io.IOException
 
-class AuthErrorMapper(gson: Gson) : BaseErrorMapper(gson) {
 
+class AuthErrorMapper(gson: Gson) : BaseErrorMapper(gson) {
     override fun mapThrowableToError(throwable: Throwable): IError {
         val error: IError = when (throwable) {
             is HttpException -> {
@@ -25,7 +26,10 @@ class AuthErrorMapper(gson: Gson) : BaseErrorMapper(gson) {
                     AuthException.Type.WRONG_CREDENTIALS -> {
                         Error(
                             VALIDATION_ERROR,
-                            mapOf(),
+                            mapOf(
+                                "email" to listOf("Invalid email or password"),
+                                "password" to listOf("Invalid email or password")
+                            ),
                             throwable
                         )
                     }

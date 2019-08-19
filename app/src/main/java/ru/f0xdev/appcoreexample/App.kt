@@ -4,10 +4,7 @@ import androidx.multidex.MultiDexApplication
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.KoinComponent
 import org.koin.core.context.startKoin
-import ru.f0xdev.appcoreexample.di.accountsModule
-import ru.f0xdev.appcoreexample.di.commonModule
-import ru.f0xdev.appcoreexample.di.dependenciesProviderModule
-import ru.f0xdev.appcoreexample.di.networkModule
+import ru.f0xdev.appcoreexample.di.*
 import ru.f0xdev.f0xcore.deps.ComponentDependenciesProvider
 import ru.f0xdev.f0xcore.deps.HasComponentDependencies
 
@@ -27,7 +24,8 @@ class App : MultiDexApplication(), HasComponentDependencies, KoinComponent {
                     commonModule,
                     networkModule("https://reqres.in"),
                     accountsModule("https://reqres.in"),
-                    dependenciesProviderModule
+                    dependenciesProviderModule,
+                    presentersModule
 
                 )
             )

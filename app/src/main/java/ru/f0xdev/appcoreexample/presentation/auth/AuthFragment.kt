@@ -14,11 +14,11 @@ import ru.f0xdev.f0xcore.base.BaseView
 import ru.f0xdev.f0xcore.ui.inputvalidation.views.ValidatableView
 import ru.f0xdev.f0xcore.util.getValidatableViews
 
-interface AuthView : BaseView {
+interface AuthView : BaseView, ValidatableView {
 
 }
 
-class AuthFragment : ABaseFragment(), AuthView, ValidatableView {
+class AuthFragment : ABaseFragment(), AuthView {
 
     private val p: AuthPresenter by inject()
 
@@ -47,9 +47,5 @@ class AuthFragment : ABaseFragment(), AuthView, ValidatableView {
         }
     }
 
-
-    override fun showValidationError(details: Map<String, List<String>>) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
 
 }

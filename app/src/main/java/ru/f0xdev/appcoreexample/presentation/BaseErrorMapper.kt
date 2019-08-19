@@ -8,12 +8,6 @@ import ru.f0xdev.f0xcore.presentation.errors.IErrorMapper
 import ru.f0xdev.f0xcore.util.fromJsonTyped
 import java.io.IOException
 
-data class Error(
-    override val type: String,
-    override val details: Map<String, List<String>>,
-    override var rawException: Throwable
-) : IError
-
 open class BaseErrorMapper(private val gson: Gson) : IErrorMapper {
     open val knownErrorMessages = mapOf<String, Map<String, String>>()
 

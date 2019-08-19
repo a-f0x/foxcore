@@ -4,6 +4,7 @@ import android.accounts.AbstractAccountAuthenticator
 import android.accounts.Account
 import android.accounts.AccountAuthenticatorResponse
 import android.accounts.AccountManager
+import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
 import com.google.gson.Gson
@@ -27,6 +28,7 @@ class AccountAuthenticator(
         private const val DEFAULT_CRYPT = "default_secret_k" // надо  что бы длина была именно 16
         const val AUTH_EXCEPTION_KEY = "auth_exception_key"
 
+        @SuppressLint("MissingPermission")
         internal fun getCryptKey(accountManager: AccountManager, account: Account): String {
             return accountManager.getUserData(account, ACCOUNT_CREATE_TIME_KEY) ?: DEFAULT_CRYPT
         }
@@ -35,6 +37,7 @@ class AccountAuthenticator(
 
     private val gson: Gson = Gson()
 
+    @SuppressLint("MissingPermission")
     override fun getAuthToken(
         response: AccountAuthenticatorResponse?,
         account: Account,

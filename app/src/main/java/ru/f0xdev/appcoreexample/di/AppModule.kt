@@ -15,6 +15,10 @@ import ru.f0xdev.appcoreexample.net.HttpHeaderInterceptor
 import ru.f0xdev.f0xcore.auth.*
 import ru.f0xdev.f0xcore.auth.net.UnauthorizedErrorProcessor
 import ru.f0xdev.f0xcore.net.UserAgentProvider
+import ru.f0xdev.f0xcore.providers.DefaultCoroutineContextProvider
+import ru.f0xdev.f0xcore.providers.DefaultRxSchedulerProvider
+import ru.f0xdev.f0xcore.providers.ICoroutineContextProvider
+import ru.f0xdev.f0xcore.providers.IRxSchedulerProvider
 import ru.f0xdev.f0xcore.util.Cryptographer
 
 
@@ -39,6 +43,14 @@ val commonModule = module {
             authConfig,
             get()
         )
+    }
+
+    single<ICoroutineContextProvider> {
+        DefaultCoroutineContextProvider()
+    }
+
+    single<IRxSchedulerProvider> {
+        DefaultRxSchedulerProvider()
     }
 
     factory {

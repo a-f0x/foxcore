@@ -7,16 +7,18 @@ interface ValidatableInput {
     var fieldKey: String?
     val onValidationSuccess: (input: ValidatableInput) -> Unit
     val onValidationError: (input: ValidatableInput) -> Unit
-    val validationInput: String
+    fun getValidationValue(): String
     val validationRules: List<InputValidationRule>
     val validationErrors: MutableList<InputValidationError>
+
+    fun setError(errorText: CharSequence?)
 
     fun validate(): Boolean {
         val errors = validationErrors
         errors.clear()
 
         validationRules.forEach {
-            it.validate(validationInput)?.let { err ->
+            it.validate(getValidationValue())?.let { err ->
                 errors.add(err)
             }
         }

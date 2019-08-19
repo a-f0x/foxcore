@@ -6,6 +6,7 @@ import android.view.View
 import androidx.annotation.StringRes
 import ru.f0xdev.f0xcore.R
 import ru.f0xdev.f0xcore.base.mvp.MvpAppCompatFragment
+import ru.f0xdev.f0xcore.util.getValidatableViews
 import ru.f0xdev.f0xcore.util.hideKeyboard
 import ru.f0xdev.f0xcore.util.visible
 
@@ -127,6 +128,16 @@ abstract class ABaseFragment : MvpAppCompatFragment(), BaseView {
             it.setButtonRetryText(buttonText)
             it.onRetryAction(action)
             it.visible(true)
+        }
+    }
+
+    fun showValidationError(details: Map<String, List<String>>) {
+        getValidatableViews().forEach { vi ->
+            val fKey = vi.fieldKey
+            if (fKey != null)
+                details[fKey]?.let { errors ->
+                    vi.setError(errors[0])
+                }
         }
     }
 

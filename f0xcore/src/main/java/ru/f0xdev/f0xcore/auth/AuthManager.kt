@@ -49,20 +49,30 @@ class AuthManager(
     @Throws(AuthException::class)
     override fun login(username: String, password: String) {
         val options = loginOptions(username, password)
-        val acc = getAccountOrCreate()
+
+        var acc = getAccount()
+        if (acc != null) {
+            logoutWithoutNotification()
+        }
+        acc = addAccount()
         getAuthToken(acc, options)
         listeners.forEach {
             it.onLogin()
         }
     }
 
-    @SuppressLint("MissingPermission")
     override fun logout() {
-        val acc = getAccount() ?: return
-        accountManager.removeAccount(acc, null, null).result
+        logoutWithoutNotification()
         listeners.forEach {
             it.onLogout()
         }
+    }
+
+    @SuppressLint("MissingPermission")
+    private fun logoutWithoutNotification() {
+        val acc = getAccount() ?: return
+        accountManager.removeAccount(acc, null, null).result
+
     }
 
     @SuppressLint("MissingPermission")
@@ -132,13 +142,13 @@ class AuthManager(
     }
 
     private fun getAccountOrCreate(): Account {
-        return getAccount() ?: addAccount(config.accountName, config.accountType)
+        return getAccount() ?: addAccount()
     }
 
     @SuppressLint("MissingPermission")
-    private fun addAccount(accountName: String, accountType: String): Account {
+    private fun addAccount(): Account {
         val createAccountTime = "key${Date().time}"
-        val account = Account(accountName, accountType)
+        val account = Account(config.accountName, config.accountType)
         accountManager.addAccountExplicitly(account, null, Bundle.EMPTY)
         accountManager.setUserData(account, AccountAuthenticator.ACCOUNT_CREATE_TIME_KEY, createAccountTime)
         return account
