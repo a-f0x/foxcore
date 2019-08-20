@@ -42,6 +42,7 @@ dependencies {
     implementation uiDependencies.inputMask
 
     implementation moxyDependencies.core
+    implementation moxyDependencies.androidX
     kapt moxyDependencies.kapt
 
     implementation kotlinDependencies.jdk
