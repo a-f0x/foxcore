@@ -5,5 +5,7 @@ data class UsersListItem(
     val email: String,
     val firstName: String,
     val lastName: String,
-    val avatar: String
+    val avatar: String,
+    val status: String
+
 )

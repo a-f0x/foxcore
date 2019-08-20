@@ -37,6 +37,8 @@ class SettingsFragmentPresenter(
     }
 
     fun logout() {
-        authManager.logout()
+        launchOnUI(false, block = {
+            launchBackground { authManager.logout() }.await()
+        })
     }
 }

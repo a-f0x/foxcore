@@ -3,17 +3,17 @@
     <group
             android:id="@+id/menu_balance"
             android:checkableBehavior="none"
-            android:visible="false">
+            android:visible="true">
+        <item
+                android:id="@+id/nav_setting_about"
+                android:icon="@drawable/ic_information"
+                android:title="@string/nav_setting_about"/>
+
         <item
                 android:id="@+id/nav_settings_logout"
                 android:icon="@drawable/ic_logout"
                 android:title="@string/nav_logout_title"
                 app:actionViewClass="android.widget.ImageView"/>
-        <item
-                android:id="@+id/nav_setting_about"
-                android:icon="@drawable/ic_information"
-                android:visible="true"
-                android:title="@string/nav_setting_about"/>
 
     </group>
 

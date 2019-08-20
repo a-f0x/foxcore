@@ -37,6 +37,10 @@ abstract class ABaseRecyclerViewAdapter<I>(var onActionClick: ((item: I) -> Unit
 
     }
 
+    protected fun getItem(position: Int): I {
+        return items[position]
+    }
+
     private fun getItemPosition(item: I): Int = items.indexOf(item)
 
 }

@@ -27,8 +27,8 @@ abstract class ABaseFragment : MvpAppCompatFragment(), BaseView {
         activity?.title = title
     }
 
-    open val progressLayout: View? = activity?.findViewById(R.id.progressLayout)
-    open val errorView: IErrorView? = null
+    open var progressLayout: View? = activity?.findViewById(R.id.progressLayout)
+    open var errorView: IErrorView? = null
 
     override fun showProgress(show: Boolean) {
         progressLayout?.let {

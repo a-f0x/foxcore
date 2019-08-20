@@ -62,5 +62,7 @@ dependencies {
     implementation koinDependencies.androidScopes
     implementation koinDependencies.androidExts
 
+    implementation 'com.squareup.picasso:picasso:+'
+
 
 }

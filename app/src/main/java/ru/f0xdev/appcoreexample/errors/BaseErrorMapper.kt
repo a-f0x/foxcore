@@ -46,12 +46,16 @@ open class BaseErrorMapper(private val gson: Gson) : IErrorMapper {
             throwable
         )
 
-    protected open fun createUnknownError(throwable: Throwable): IError =
-        Error(
+    protected open fun createUnknownError(throwable: Throwable): IError {
+        throwable.printStackTrace()
+
+        return Error(
             ErrorConsts.UNKNOWN_ERROR,
             emptyMap(),
             throwable
         )
+
+    }
 
 
     open fun mapErrorDetails(details: Map<String, List<String>>): Map<String, List<String>> {

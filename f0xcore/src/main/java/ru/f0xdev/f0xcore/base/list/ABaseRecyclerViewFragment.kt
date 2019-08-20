@@ -26,11 +26,11 @@ abstract class ABaseRecyclerViewFragment<I, ADAPTER : ABaseRecyclerViewAdapter<I
 
     abstract val adapter: ADAPTER
 
-    abstract val swipeRefresh: SwipeRefreshLayout?
+    abstract var swipeRefresh: SwipeRefreshLayout?
 
-    abstract val emptyView: IEmptyView?
+    abstract var emptyView: IEmptyView?
 
-    abstract val recyclerView: RecyclerView
+    abstract var recyclerView: RecyclerView
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -39,6 +39,7 @@ abstract class ABaseRecyclerViewFragment<I, ADAPTER : ABaseRecyclerViewAdapter<I
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initViews()
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.adapter = adapter
         swipeRefresh?.setColorSchemeResources(R.color.core_primary_color)
@@ -47,6 +48,7 @@ abstract class ABaseRecyclerViewFragment<I, ADAPTER : ABaseRecyclerViewAdapter<I
         }
     }
 
+    abstract fun initViews()
 
     abstract fun onLoadData(bySwipeRefresh: Boolean)
 

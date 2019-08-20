@@ -32,11 +32,11 @@ class AuthFragment : ABaseFragment(), AuthView {
         return inflater.inflate(R.layout.fragment_auth, container, false)
     }
 
-    override val progressLayout: View? = progressView
+    override var progressLayout: View? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        progressLayout = progressView
         enterButton.setOnClickListener {
             validateInputs(
                 getValidatableViews(),

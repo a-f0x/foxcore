@@ -24,6 +24,7 @@ interface ChatsListView : BaseView, ListView<ChatListItem>
 
 
 class ChatsListFragment : ABaseRecyclerViewFragment<ChatListItem, ChatsListAdapter>(), ChatsListView {
+
     private val p: ChatsListFragmentPresenter by inject()
 
     @InjectPresenter
@@ -38,11 +39,18 @@ class ChatsListFragment : ABaseRecyclerViewFragment<ChatListItem, ChatsListAdapt
         presenter.onChatClick(chat)
     }
 
-    override val swipeRefresh: SwipeRefreshLayout = chatsSwipeRefresh
-    override val emptyView: IEmptyView? = chatsEmptyView
+    override var swipeRefresh: SwipeRefreshLayout? = null
 
-    override val recyclerView: RecyclerView = chatsRecyclerView
+    override var emptyView: IEmptyView? = null
 
+    override lateinit var recyclerView: RecyclerView
+
+    override fun initViews() {
+        swipeRefresh = chatsSwipeRefresh
+        emptyView = chatsEmptyView
+        recyclerView = chatsRecyclerView
+        progressLayout = chatsProgressBar
+    }
 
     override fun onLoadData(bySwipeRefresh: Boolean) {
         presenter.loadChats(bySwipeRefresh)

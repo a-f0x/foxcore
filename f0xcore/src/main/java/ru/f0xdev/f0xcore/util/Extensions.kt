@@ -6,6 +6,7 @@ import android.content.SharedPreferences
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
@@ -241,3 +242,6 @@ fun Any.isLateinitPropertyInitialized(lateinitFieldName: String): Boolean {
     }
 }
 
+fun Context.getInflater(): LayoutInflater {
+    return getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+}

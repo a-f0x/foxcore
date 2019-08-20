@@ -2,8 +2,10 @@ package ru.f0xdev.appcoreexample.main.settings
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
+import android.view.ViewGroup
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.google.android.material.navigation.NavigationView
@@ -36,6 +38,13 @@ class SettingsFragment : ABaseFragment(), SettingsView, NavigationView.OnNavigat
 
     @ProvidePresenter
     fun provide() = p
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        val view = inflater.inflate(R.layout.fragment_settings, container, false)
+        setHasOptionsMenu(true)
+        return view
+    }
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

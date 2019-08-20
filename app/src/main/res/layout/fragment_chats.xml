@@ -11,6 +11,7 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
+            app:titleTextColor="@color/white"
             app:popupTheme="@style/AppTheme.PopupOverlay"
             app:title="@string/menu_chats_title"
     />
@@ -43,7 +44,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                tools:visibility="visible"/>
+                android:text="@string/empty_list_text"
+                tools:visibility="visible"
+        />
 
 
         <include

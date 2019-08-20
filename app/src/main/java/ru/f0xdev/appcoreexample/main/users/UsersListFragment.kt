@@ -1,6 +1,5 @@
 package ru.f0xdev.appcoreexample.main.users
 
-import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.arellomobile.mvp.presenter.InjectPresenter
@@ -29,17 +28,21 @@ class UsersListFragment : ABaseRecyclerViewFragment<UsersListItem, UsersListAdap
 
     override val fragmentLayoutId: Int = R.layout.fragment_users
 
-    override val progressLayout: View? = usersProgressBar
 
     override val adapter: UsersListAdapter = UsersListAdapter { user ->
         presenter.onUserClick(user)
     }
 
-    override val swipeRefresh: SwipeRefreshLayout = usersSwipeRefresh
+    override var swipeRefresh: SwipeRefreshLayout? = null
+    override var emptyView: IEmptyView? = null
+    override lateinit var recyclerView: RecyclerView
 
-    override val emptyView: IEmptyView? = usersEmptyView
-
-    override val recyclerView: RecyclerView = usersRecyclerView
+    override fun initViews() {
+        swipeRefresh = usersSwipeRefresh
+        emptyView = usersEmptyView
+        recyclerView = usersRecyclerView
+        progressLayout = usersProgressBar
+    }
 
 
     override fun onLoadData(bySwipeRefresh: Boolean) {

@@ -13,7 +13,7 @@ class ProfileRepository : IProfileRepository {
     override suspend fun loadProfile(): UserProfile {
         delay(500)
         return UserProfile(
-            UsersListItem(1, "eve.holt@reqres.in", "TestFirstName", "TestLastName", "")
+            UsersListItem(1, "eve.holt@reqres.in", "TestFirstName", "TestLastName", "", "Online")
         )
     }
 
