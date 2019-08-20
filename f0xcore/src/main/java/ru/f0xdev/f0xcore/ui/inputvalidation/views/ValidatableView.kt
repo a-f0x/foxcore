@@ -1,5 +1,10 @@
 package ru.f0xdev.f0xcore.ui.inputvalidation.views
 
+import moxy.viewstate.strategy.OneExecutionStateStrategy
+import moxy.viewstate.strategy.StateStrategyType
+
+
+@StateStrategyType(OneExecutionStateStrategy::class)
 interface ValidatableView {
 
     fun validateInputs(
@@ -21,5 +26,5 @@ interface ValidatableView {
         if (isValid) onSuccess() else onError?.invoke(failedInputs)
     }
 
-    fun showValidationError(details: Map<String, List<String>>)
+
 }

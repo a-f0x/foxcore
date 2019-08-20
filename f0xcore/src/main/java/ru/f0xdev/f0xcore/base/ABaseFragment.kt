@@ -4,8 +4,8 @@ import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.annotation.StringRes
+import moxy.MvpAppCompatFragment
 import ru.f0xdev.f0xcore.R
-import ru.f0xdev.f0xcore.base.mvp.MvpAppCompatFragment
 import ru.f0xdev.f0xcore.util.getValidatableViews
 import ru.f0xdev.f0xcore.util.hideKeyboard
 import ru.f0xdev.f0xcore.util.visible
@@ -131,7 +131,7 @@ abstract class ABaseFragment : MvpAppCompatFragment(), BaseView {
         }
     }
 
-    fun showValidationError(details: Map<String, List<String>>) {
+    override fun showValidationError(details: Map<String, List<String>>) {
         getValidatableViews().forEach { vi ->
             val fKey = vi.fieldKey
             if (fKey != null)

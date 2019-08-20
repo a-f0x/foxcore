@@ -7,11 +7,14 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import moxy.viewstate.strategy.OneExecutionStateStrategy
+import moxy.viewstate.strategy.StateStrategyType
 import ru.f0xdev.f0xcore.R
 import ru.f0xdev.f0xcore.base.ABaseFragment
 import ru.f0xdev.f0xcore.base.IEmptyView
 
 
+@StateStrategyType(OneExecutionStateStrategy::class)
 interface ListView<I> {
     fun setItems(items: List<I>)
     fun invalidateItem(item: I)
@@ -40,7 +43,7 @@ abstract class ABaseRecyclerViewFragment<I, ADAPTER : ABaseRecyclerViewAdapter<I
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initViews()
-        recyclerView.layoutManager = LinearLayoutManager(context)
+        recyclerView.layoutManager = LinearLayoutManager(fragmentContext)
         recyclerView.adapter = adapter
         swipeRefresh?.setColorSchemeResources(R.color.core_primary_color)
         swipeRefresh?.setOnRefreshListener {

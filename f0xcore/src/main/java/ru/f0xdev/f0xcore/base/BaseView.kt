@@ -2,9 +2,9 @@ package ru.f0xdev.f0xcore.base
 
 import android.view.View
 import androidx.annotation.StringRes
-import com.arellomobile.mvp.MvpView
-import com.arellomobile.mvp.viewstate.strategy.OneExecutionStateStrategy
-import com.arellomobile.mvp.viewstate.strategy.StateStrategyType
+import moxy.MvpView
+import moxy.viewstate.strategy.OneExecutionStateStrategy
+import moxy.viewstate.strategy.StateStrategyType
 
 @StateStrategyType(OneExecutionStateStrategy::class)
 interface BaseView : MvpView {
@@ -28,4 +28,6 @@ interface BaseView : MvpView {
     fun showMessageWithAction(message: String, actionText: String, listener: View.OnClickListener)
 
     fun showMessageWithAction(@StringRes messageId: Int, @StringRes actionTextId: Int, listener: View.OnClickListener)
+
+    fun showValidationError(details: Map<String, List<String>>)
 }

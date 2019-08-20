@@ -1,6 +1,6 @@
 package ru.f0xdev.appcoreexample.main.chats
 
-import com.arellomobile.mvp.InjectViewState
+import moxy.InjectViewState
 import ru.f0xdev.f0xcore.presentation.errors.IErrorProcessor
 import ru.f0xdev.f0xcore.presentation.presenters.ABaseCoroutinePresenter
 import ru.f0xdev.f0xcore.providers.ICoroutineContextProvider

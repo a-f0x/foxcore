@@ -8,9 +8,10 @@ import android.widget.Toast
 import androidx.annotation.StringRes
 import androidx.core.content.ContextCompat
 import com.google.android.material.snackbar.Snackbar
+import moxy.MvpAppCompatActivity
 import ru.f0xdev.f0xcore.BuildConfig
 import ru.f0xdev.f0xcore.R
-import ru.f0xdev.f0xcore.base.mvp.MvpAppCompatActivity
+import ru.f0xdev.f0xcore.util.getValidatableViews
 import ru.f0xdev.f0xcore.util.hideKeyboard
 import ru.f0xdev.f0xcore.util.visible
 
@@ -136,6 +137,16 @@ abstract class ABaseActivity : MvpAppCompatActivity(), BaseView, BackPressable {
             }
         }
         super.onBackPressed()
+    }
+
+    override fun showValidationError(details: Map<String, List<String>>) {
+        getValidatableViews().forEach { vi ->
+            val fKey = vi.fieldKey
+            if (fKey != null)
+                details[fKey]?.let { errors ->
+                    vi.setError(errors[0])
+                }
+        }
     }
 
 }

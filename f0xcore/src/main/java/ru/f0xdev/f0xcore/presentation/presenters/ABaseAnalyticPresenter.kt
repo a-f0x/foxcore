@@ -1,7 +1,7 @@
 package ru.f0xdev.f0xcore.presentation.presenters
 
-import com.arellomobile.mvp.MvpPresenter
-import com.arellomobile.mvp.MvpView
+import moxy.MvpPresenter
+import moxy.MvpView
 import ru.f0xdev.f0xcore.analytic.AnalyticEvent
 import ru.f0xdev.f0xcore.analytic.IAnalytic
 import ru.f0xdev.f0xcore.util.logError

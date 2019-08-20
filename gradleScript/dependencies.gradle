@@ -13,9 +13,12 @@ ext {
     //Moxy
     moxyVersion = '2.0-alpha04'
     moxyDependencies = [
-            core    : "com.github.moxy-community:moxy:$moxyVersion",
-            kapt    : "com.github.moxy-community:moxy-compiler:$moxyVersion",
-            androidX: "com.github.moxy-community:moxy-android:$moxyVersion",
+            core            : "com.github.moxy-community:moxy:$moxyVersion",
+            android         : "com.github.moxy-community:moxy-android:$moxyVersion",
+            kapt            : "com.github.moxy-community:moxy-compiler:$moxyVersion",
+            androidX        : "com.github.moxy-community:moxy-android:$moxyVersion",
+            androidXMaterial: "com.github.moxy-community:moxy-material:$moxyVersion",
+            appcompat       : "com.github.moxy-community:moxy-app-compat:$moxyVersion"
     ]
 
     //Rx
