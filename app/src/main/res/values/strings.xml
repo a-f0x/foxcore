@@ -4,5 +4,8 @@
     <string name="auth_email_hint">Email</string>
     <string name="auth_password_hint">Password</string>
     <string name="contine_text">Continue</string>
+    <string name="menu_users_title">Users</string>
+    <string name="menu_chats_title">Chats</string>
+    <string name="menu_settings_title">Settings</string>
 
 </resources>

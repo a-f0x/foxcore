@@ -18,7 +18,7 @@
                 android:layout_height="match_parent"/>
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
-    <ru.f0xdev.f0xcore.ui.list.TextEmptyView
+    <ru.f0xdev.f0xcore.base.list.TextEmptyView
             android:id="@+id/iEmptyView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

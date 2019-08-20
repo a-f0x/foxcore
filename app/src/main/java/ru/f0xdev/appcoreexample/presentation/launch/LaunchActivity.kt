@@ -6,6 +6,7 @@ import com.arellomobile.mvp.presenter.ProvidePresenter
 import org.koin.android.ext.android.inject
 import ru.f0xdev.appcoreexample.R
 import ru.f0xdev.appcoreexample.presentation.auth.AuthFragment
+import ru.f0xdev.appcoreexample.presentation.main.root.RootMainFragment
 import ru.f0xdev.f0xcore.base.ABaseActivity
 import ru.f0xdev.f0xcore.base.BaseView
 import ru.f0xdev.f0xcore.base.IFragmentActivity
@@ -45,7 +46,12 @@ class MainActivity : ABaseActivity(),
     }
 
     override fun showMainFragment() {
-
+        switchFragmentWithDefaultAmination(
+            fragment = RootMainFragment(),
+            tag = RootMainFragment::class.java.simpleName,
+            activity = this,
+            clearTopFragments = true
+        )
     }
 
 }
