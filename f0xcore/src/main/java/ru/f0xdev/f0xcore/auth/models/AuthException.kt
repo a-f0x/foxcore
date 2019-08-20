@@ -1,4 +1,4 @@
-package finance.robo.android.accountservice.models
+package ru.f0xdev.f0xcore.auth.models
 
 import com.google.gson.annotations.SerializedName
 

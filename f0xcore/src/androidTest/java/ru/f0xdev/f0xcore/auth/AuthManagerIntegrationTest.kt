@@ -3,13 +3,12 @@ package ru.f0xdev.f0xcore.auth
 import android.accounts.AccountManager
 import androidx.test.InstrumentationRegistry
 import androidx.test.runner.AndroidJUnit4
-
-import finance.robo.android.accountservice.models.AuthException
 import org.junit.Assert.*
 import org.junit.Test
 import org.junit.runner.RunWith
 import ru.f0xdev.f0xcore.R
 import ru.f0xdev.f0xcore.auth.models.AccessToken
+import ru.f0xdev.f0xcore.auth.models.AuthException
 import ru.f0xdev.f0xcore.auth.net.IAuthRemoteDataSource
 import ru.f0xdev.f0xcore.util.Cryptographer
 

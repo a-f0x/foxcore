@@ -6,7 +6,6 @@ import android.accounts.AccountManager
 import android.os.Bundle
 import com.google.gson.Gson
 import com.nhaarman.mockitokotlin2.whenever
-import finance.robo.android.accountservice.models.AuthException
 import org.junit.Assert.*
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -14,6 +13,7 @@ import org.mockito.Mockito.mock
 import org.robolectric.RobolectricTestRunner
 import org.robolectric.RuntimeEnvironment
 import ru.f0xdev.f0xcore.auth.models.AccessToken
+import ru.f0xdev.f0xcore.auth.models.AuthException
 import ru.f0xdev.f0xcore.auth.net.IAuthRemoteDataSource
 import java.io.IOException
 

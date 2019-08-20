@@ -8,7 +8,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
 import com.google.gson.Gson
-import finance.robo.android.accountservice.models.AuthException
+import ru.f0xdev.f0xcore.auth.models.AuthException
 import ru.f0xdev.f0xcore.auth.net.IAuthRemoteDataSource
 import java.io.IOException
 

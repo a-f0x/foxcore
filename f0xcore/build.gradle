@@ -29,15 +29,6 @@ android {
         unitTests.returnDefaultValues = true
     }
 
-    kapt {
-        arguments {
-            arg("moxyReflectorPackage", "finance.robo.android.photoid")
-        }
-        generateStubs = true
-    }
-
-
-
 
 }
 

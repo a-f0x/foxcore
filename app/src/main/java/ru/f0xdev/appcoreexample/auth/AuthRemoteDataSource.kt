@@ -1,11 +1,11 @@
 package ru.f0xdev.appcoreexample.auth
 
 import com.google.gson.annotations.SerializedName
-import finance.robo.android.accountservice.models.AuthException
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.POST
 import ru.f0xdev.f0xcore.auth.models.AccessToken
+import ru.f0xdev.f0xcore.auth.models.AuthException
 import ru.f0xdev.f0xcore.auth.net.IAuthRemoteDataSource
 import ru.f0xdev.f0xcore.util.logError
 import java.io.IOException

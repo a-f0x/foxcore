@@ -33,6 +33,7 @@ dependencies {
     implementation 'androidx.multidex:multidex:2.0.1'
 
     implementation project(path: ':f0xcore')
+//    implementation  "com.github.a-f0x:foxcore:0.0.1-alpha"
 
     implementation androidXDependencies.ktx
     implementation androidXDependencies.appcompat

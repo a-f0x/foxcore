@@ -1,10 +1,10 @@
 package ru.f0xdev.appcoreexample.auth
 
 import com.google.gson.Gson
-import finance.robo.android.accountservice.models.AuthException
 import retrofit2.HttpException
 import ru.f0xdev.appcoreexample.errors.BaseErrorMapper
 import ru.f0xdev.appcoreexample.errors.Error
+import ru.f0xdev.f0xcore.auth.models.AuthException
 import ru.f0xdev.f0xcore.presentation.errors.ErrorConsts.VALIDATION_ERROR
 import ru.f0xdev.f0xcore.presentation.errors.IError
 import java.io.IOException

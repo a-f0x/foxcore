@@ -1,7 +1,7 @@
 package ru.f0xdev.f0xcore.auth
 
-import finance.robo.android.accountservice.models.AuthException
 import ru.f0xdev.f0xcore.auth.models.AccessToken
+import ru.f0xdev.f0xcore.auth.models.AuthException
 
 interface IAuthManager {
 

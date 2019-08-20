@@ -5,8 +5,8 @@ import android.accounts.AccountManager
 import android.annotation.SuppressLint
 import android.os.Bundle
 import com.google.gson.Gson
-import finance.robo.android.accountservice.models.AuthException
 import ru.f0xdev.f0xcore.auth.models.AccessToken
+import ru.f0xdev.f0xcore.auth.models.AuthException
 import java.util.*
 import kotlin.collections.ArrayList
 

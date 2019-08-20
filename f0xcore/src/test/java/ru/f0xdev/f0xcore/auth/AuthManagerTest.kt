@@ -6,8 +6,6 @@ import android.accounts.AccountManagerFuture
 import android.os.Bundle
 import com.google.gson.Gson
 import com.nhaarman.mockitokotlin2.*
-
-import finance.robo.android.accountservice.models.AuthException
 import org.junit.Assert.*
 import org.junit.Test
 import org.mockito.ArgumentCaptor
@@ -15,6 +13,7 @@ import org.mockito.Mockito
 import org.mockito.Mockito.any
 import org.mockito.Mockito.mock
 import ru.f0xdev.f0xcore.auth.models.AccessToken
+import ru.f0xdev.f0xcore.auth.models.AuthException
 import ru.f0xdev.f0xcore.setFieldValue
 import java.util.*
 import java.util.concurrent.TimeUnit
