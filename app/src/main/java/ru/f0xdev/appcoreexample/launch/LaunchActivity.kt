@@ -1,8 +1,10 @@
 package ru.f0xdev.appcoreexample.launch
 
 import android.os.Bundle
-import com.arellomobile.mvp.presenter.InjectPresenter
-import com.arellomobile.mvp.presenter.ProvidePresenter
+import moxy.presenter.InjectPresenter
+import moxy.presenter.ProvidePresenter
+import moxy.viewstate.strategy.OneExecutionStateStrategy
+import moxy.viewstate.strategy.StateStrategyType
 import org.koin.android.ext.android.inject
 import ru.f0xdev.appcoreexample.R
 import ru.f0xdev.appcoreexample.auth.AuthFragment
@@ -11,6 +13,7 @@ import ru.f0xdev.f0xcore.base.ABaseActivity
 import ru.f0xdev.f0xcore.base.BaseView
 import ru.f0xdev.f0xcore.base.IFragmentActivity
 
+@StateStrategyType(OneExecutionStateStrategy::class)
 interface MainView : BaseView {
     fun showAuthFragment()
     fun showMainFragment()

@@ -41,7 +41,7 @@ dependencies {
     implementation uiDependencies.numberPicker
     implementation uiDependencies.inputMask
 
-    implementation moxyDependencies.core
+    implementation moxyDependencies.appcompat
     kapt moxyDependencies.kapt
 
     implementation kotlinDependencies.jdk

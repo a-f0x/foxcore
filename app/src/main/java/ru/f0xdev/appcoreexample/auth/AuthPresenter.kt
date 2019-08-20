@@ -1,6 +1,6 @@
 package ru.f0xdev.appcoreexample.auth
 
-import com.arellomobile.mvp.InjectViewState
+import moxy.InjectViewState
 import ru.f0xdev.f0xcore.auth.IAuthManager
 import ru.f0xdev.f0xcore.presentation.errors.IErrorProcessor
 import ru.f0xdev.f0xcore.presentation.presenters.ABaseCoroutinePresenter

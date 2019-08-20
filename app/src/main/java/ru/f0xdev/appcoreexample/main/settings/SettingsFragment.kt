@@ -6,11 +6,13 @@ import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import com.arellomobile.mvp.presenter.InjectPresenter
-import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.fragment_settings.*
 import kotlinx.android.synthetic.main.header_settings_fragment.view.*
+import moxy.presenter.InjectPresenter
+import moxy.presenter.ProvidePresenter
+import moxy.viewstate.strategy.OneExecutionStateStrategy
+import moxy.viewstate.strategy.StateStrategyType
 import org.koin.android.ext.android.inject
 import ru.f0xdev.appcoreexample.R
 import ru.f0xdev.appcoreexample.main.users.UsersListItem
@@ -22,7 +24,7 @@ data class UserProfile(
     val user: UsersListItem
 )
 
-
+@StateStrategyType(OneExecutionStateStrategy::class)
 interface SettingsView : BaseView {
     fun setUserProfile(userProfile: UserProfile)
     fun showConfirmationDialog()

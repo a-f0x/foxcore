@@ -2,9 +2,9 @@ package ru.f0xdev.appcoreexample.main.chats
 
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-import com.arellomobile.mvp.presenter.InjectPresenter
-import com.arellomobile.mvp.presenter.ProvidePresenter
 import kotlinx.android.synthetic.main.fragment_chats.*
+import moxy.presenter.InjectPresenter
+import moxy.presenter.ProvidePresenter
 import org.koin.android.ext.android.inject
 import ru.f0xdev.appcoreexample.R
 import ru.f0xdev.f0xcore.base.BaseView

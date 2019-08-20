@@ -29,6 +29,16 @@ android {
         unitTests.returnDefaultValues = true
     }
 
+    kapt {
+        arguments {
+            arg("moxyReflectorPackage", "finance.robo.android.photoid")
+        }
+        generateStubs = true
+    }
+
+
+
+
 }
 
 dependencies {
@@ -60,7 +70,7 @@ dependencies {
     implementation uiDependencies.numberPicker
     implementation uiDependencies.inputMask
 
-    implementation moxyDependencies.core
+    compileOnly moxyDependencies.appcompat
 
     implementation kotlinDependencies.jdk
     implementation kotlinDependencies.coroutines

@@ -4,9 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.arellomobile.mvp.presenter.InjectPresenter
-import com.arellomobile.mvp.presenter.ProvidePresenter
 import kotlinx.android.synthetic.main.fragment_auth.*
+import moxy.presenter.InjectPresenter
+import moxy.presenter.ProvidePresenter
 import org.koin.android.ext.android.inject
 import ru.f0xdev.appcoreexample.R
 import ru.f0xdev.f0xcore.base.ABaseFragment

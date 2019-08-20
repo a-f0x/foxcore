@@ -83,6 +83,14 @@ fun ViewGroup.getValidatableViews(): List<ValidatableInput> {
         .filter { it is ValidatableInput && it.validationRules.isNotEmpty() } as List<ValidatableInput>
 }
 
+fun Activity.getValidatableViews(): List<ValidatableInput> {
+    window.decorView.let {
+        if (it is ViewGroup)
+            return it.getValidatableViews()
+        return emptyList()
+    }
+
+}
 fun Fragment.getValidatableViews(): List<ValidatableInput> {
     view?.let {
         if (it is ViewGroup)
