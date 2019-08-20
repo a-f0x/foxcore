@@ -10,9 +10,9 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:orientation="vertical"
-            android:paddingBottom="@dimen/padding"
-            android:paddingLeft="@dimen/padding"
-            android:paddingRight="@dimen/padding">
+            android:paddingBottom="@dimen/spacing_normal"
+            android:paddingLeft="@dimen/spacing_normal"
+            android:paddingRight="@dimen/spacing_normal">
 
         <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"

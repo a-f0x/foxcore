@@ -1,6 +1,7 @@
 package ru.f0xdev.f0xcore.auth.net
 
 import okhttp3.Request
+import ru.f0xdev.f0xcore.net.ABaseHeaderInterceptor
 
 class HeaderInterceptorTest : ABaseHeaderInterceptor(emptyMap()) {
     companion object {

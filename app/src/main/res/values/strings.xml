@@ -7,5 +7,8 @@
     <string name="menu_users_title">Users</string>
     <string name="menu_chats_title">Chats</string>
     <string name="menu_settings_title">Settings</string>
+    <string name="nav_logout_title">Logout</string>
+    <string name="nav_setting_about">About</string>
+    <string name="logout_confirmation_message">Logout from this profile?</string>
 
 </resources>

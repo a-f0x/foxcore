@@ -6,8 +6,8 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import ru.f0xdev.appcoreexample.BuildConfig
-import ru.f0xdev.appcoreexample.net.AuthRemoteDataSource
-import ru.f0xdev.appcoreexample.net.AuthRemoteDataSourceRetrofit
+import ru.f0xdev.appcoreexample.auth.AuthRemoteDataSource
+import ru.f0xdev.appcoreexample.auth.AuthRemoteDataSourceRetrofit
 import ru.f0xdev.f0xcore.auth.ITokenCryptographer
 import ru.f0xdev.f0xcore.auth.di.AuthServiceDependencies
 import ru.f0xdev.f0xcore.auth.net.IAuthRemoteDataSource

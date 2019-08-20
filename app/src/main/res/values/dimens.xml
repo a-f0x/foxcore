@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="padding">12dp</dimen>
-    <dimen name="padding_large">22dp</dimen>
+    <dimen name="spacing_normal">12dp</dimen>
+    <dimen name="spacing_large">22dp</dimen>
+    <dimen name="spacing_extra_small">4dp</dimen>
+
 </resources>

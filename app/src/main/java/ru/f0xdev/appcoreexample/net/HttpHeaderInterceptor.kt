@@ -2,8 +2,8 @@ package ru.f0xdev.appcoreexample.net
 
 import okhttp3.Request
 import ru.f0xdev.f0xcore.auth.IAuthManager
-import ru.f0xdev.f0xcore.auth.net.ABaseHeaderInterceptor
-import ru.f0xdev.f0xcore.auth.net.IResponseErrorProcessor
+import ru.f0xdev.f0xcore.net.ABaseHeaderInterceptor
+import ru.f0xdev.f0xcore.net.IResponseErrorProcessor
 import ru.f0xdev.f0xcore.net.IUserAgentProvider
 
 class HttpHeaderInterceptor(

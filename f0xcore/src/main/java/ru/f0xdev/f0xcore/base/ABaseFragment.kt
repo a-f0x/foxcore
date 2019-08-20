@@ -27,10 +27,11 @@ abstract class ABaseFragment : MvpAppCompatFragment(), BaseView {
         activity?.title = title
     }
 
-    open fun progressLayout(): View? = activity?.findViewById(R.id.progressLayout)
+    open val progressLayout: View? = activity?.findViewById(R.id.progressLayout)
+    open val errorView: IErrorView? = null
 
     override fun showProgress(show: Boolean) {
-        progressLayout()?.let {
+        progressLayout?.let {
             if (show)
                 hideKeyboard()
             it.visible(show)
@@ -41,12 +42,11 @@ abstract class ABaseFragment : MvpAppCompatFragment(), BaseView {
         activity?.finish()
     }
 
-    open fun errorView(): IErrorView? = null
 
     override fun showNetworkError(action: (() -> Unit)?) {
         hideKeyboard()
         action?.let { a ->
-            errorView()?.let { ev ->
+            errorView?.let { ev ->
                 ev.setErrorText(R.string.network_error_text)
                 ev.onRetryAction(a)
                 ev.visible(true)
@@ -67,7 +67,7 @@ abstract class ABaseFragment : MvpAppCompatFragment(), BaseView {
     override fun showUnknownErrorMessage(action: (() -> Unit)?) {
         hideKeyboard()
         action?.let { a ->
-            errorView()?.let { ev ->
+            errorView?.let { ev ->
                 ev.setErrorText(R.string.unknown_error_text)
                 ev.onRetryAction(a)
                 ev.visible(true)
@@ -113,7 +113,7 @@ abstract class ABaseFragment : MvpAppCompatFragment(), BaseView {
 
     override fun showErrorWithRetryAndCustomText(action: () -> Unit, messageId: Int, buttonText: Int) {
         hideKeyboard()
-        errorView()?.let {
+        errorView?.let {
             it.setErrorText(messageId)
             it.setButtonRetryText(buttonText)
             it.onRetryAction(action)
@@ -123,7 +123,7 @@ abstract class ABaseFragment : MvpAppCompatFragment(), BaseView {
 
     override fun showErrorWithRetryAndCustomText(action: () -> Unit, messageText: String, @StringRes buttonText: Int) {
         hideKeyboard()
-        errorView()?.let {
+        errorView?.let {
             it.setErrorText(messageText)
             it.setButtonRetryText(buttonText)
             it.onRetryAction(action)
@@ -140,7 +140,6 @@ abstract class ABaseFragment : MvpAppCompatFragment(), BaseView {
                 }
         }
     }
-
 
     private fun hideKeyboard() {
         activity?.hideKeyboard()

@@ -3,6 +3,7 @@ package ru.f0xdev.f0xcore.auth.net
 import finance.robo.android.accountservice.models.AuthException
 import okhttp3.OkHttpClient
 import ru.f0xdev.f0xcore.auth.IAuthManager
+import ru.f0xdev.f0xcore.net.IResponseErrorProcessor
 import java.io.IOException
 import java.util.concurrent.locks.ReentrantLock
 

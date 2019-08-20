@@ -9,11 +9,10 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import ru.f0xdev.f0xcore.R
 import ru.f0xdev.f0xcore.base.ABaseFragment
-import ru.f0xdev.f0xcore.base.BaseView
 import ru.f0xdev.f0xcore.base.IEmptyView
 
 
-interface ListView<I> : BaseView {
+interface ListView<I> {
     fun setItems(items: List<I>)
     fun invalidateItem(item: I)
     fun addItem(item: I)

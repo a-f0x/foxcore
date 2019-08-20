@@ -25,8 +25,10 @@ class App : MultiDexApplication(), HasComponentDependencies, KoinComponent {
                     networkModule("https://reqres.in"),
                     accountsModule("https://reqres.in"),
                     dependenciesProviderModule,
+                    remoteModule,
+                    repositoryModule,
+                    interactrorModule,
                     presentersModule
-
                 )
             )
         }
