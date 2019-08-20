@@ -9,7 +9,6 @@ import ru.f0xdev.f0xcore.util.fromJsonTyped
 import java.io.IOException
 
 open class BaseErrorMapper(private val gson: Gson) : IErrorMapper {
-    open val knownErrorMessages = mapOf<String, Map<String, String>>()
 
     override fun mapThrowableToError(throwable: Throwable): IError {
         return when (throwable) {
@@ -47,29 +46,14 @@ open class BaseErrorMapper(private val gson: Gson) : IErrorMapper {
         )
 
     protected open fun createUnknownError(throwable: Throwable): IError {
-        throwable.printStackTrace()
-
         return Error(
             ErrorConsts.UNKNOWN_ERROR,
             emptyMap(),
             throwable
         )
-
     }
 
-
-    open fun mapErrorDetails(details: Map<String, List<String>>): Map<String, List<String>> {
-        val map = mutableMapOf<String, List<String>>()
-        details.forEach { entry ->
-            map[entry.key] = entry.value.map { getValidationErrorMessage(entry.key, it.split(".")[1]) }
-        }
-        return map
+    protected open fun mapErrorDetails(details: Map<String, List<String>>): Map<String, List<String>> {
+        return details
     }
-
-    open fun getValidationErrorMessage(fieldTag: String, validationErrorType: String): String {
-        val errors = knownErrorMessages[fieldTag]
-        val errorText = errors?.get(validationErrorType)
-        return errorText ?: "Неизвестная ошибка"
-    }
-
 }

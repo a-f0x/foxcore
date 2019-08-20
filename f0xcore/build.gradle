@@ -74,12 +74,4 @@ dependencies {
     implementation retrofitDependencies.core
     implementation retrofitDependencies.logger
 
-
-//    implementation koinDependencies.core
-//    implementation koinDependencies.exts
-//    implementation koinDependencies.android
-//    implementation koinDependencies.androidScopes
-//    implementation koinDependencies.androidExts
-
-
 }
