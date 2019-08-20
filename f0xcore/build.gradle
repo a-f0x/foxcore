@@ -15,7 +15,7 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-
+        multiDexEnabled true
     }
 
     buildTypes {
@@ -61,7 +61,7 @@ dependencies {
     implementation uiDependencies.numberPicker
     implementation uiDependencies.inputMask
 
-    compileOnly moxyDependencies.appcompat
+    implementation moxyDependencies.appcompat
 
     implementation kotlinDependencies.jdk
     implementation kotlinDependencies.coroutines

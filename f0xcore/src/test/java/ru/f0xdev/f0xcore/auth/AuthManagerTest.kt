@@ -94,6 +94,23 @@ class AuthManagerTest {
             override fun isCancelled(): Boolean = false
             override fun getResult(): Bundle = bundle
         })
+        whenever(
+            am.removeAccount(
+                Mockito.any(Account::class.java),
+                eq(null),
+                eq(null)
+            )
+        ).thenReturn(object : AccountManagerFuture<Boolean> {
+            override fun getResult(): Boolean = true
+
+            override fun getResult(timeout: Long, unit: TimeUnit?): Boolean = true
+
+            override fun isDone(): Boolean = true
+
+            override fun cancel(mayInterruptIfRunning: Boolean): Boolean = false
+
+            override fun isCancelled(): Boolean = false
+        })
 
         val authManager = AuthManager(am, conf, cryptographer).apply {
             addListener(listener)
@@ -137,6 +154,24 @@ class AuthManagerTest {
             override fun isCancelled(): Boolean = false
             override fun getResult(): Bundle = bundle
         })
+        whenever(
+            am.removeAccount(
+                Mockito.any(Account::class.java),
+                eq(null),
+                eq(null)
+            )
+        ).thenReturn(object : AccountManagerFuture<Boolean> {
+            override fun getResult(): Boolean = true
+
+            override fun getResult(timeout: Long, unit: TimeUnit?): Boolean = true
+
+            override fun isDone(): Boolean = true
+
+            override fun cancel(mayInterruptIfRunning: Boolean): Boolean = false
+
+            override fun isCancelled(): Boolean = false
+        })
+
 
         val authManager = AuthManager(am, conf, cryptographer).apply {
             addListener(listener)
