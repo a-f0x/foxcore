@@ -1,14 +1,12 @@
 package ru.f0xdev.appcoreexample.main.chats
 
 import androidx.recyclerview.widget.RecyclerView
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import kotlinx.android.synthetic.main.fragment_chats.*
 import moxy.presenter.InjectPresenter
 import moxy.presenter.ProvidePresenter
 import org.koin.android.ext.android.inject
 import ru.f0xdev.appcoreexample.R
 import ru.f0xdev.f0xcore.base.BaseView
-import ru.f0xdev.f0xcore.base.IEmptyView
 import ru.f0xdev.f0xcore.base.list.ABaseRecyclerViewFragment
 import ru.f0xdev.f0xcore.base.list.ListView
 
@@ -39,12 +37,7 @@ class ChatsListFragment : ABaseRecyclerViewFragment<ChatListItem, ChatsListAdapt
         presenter.onChatClick(chat)
     }
 
-    override var swipeRefresh: SwipeRefreshLayout? = null
-
-    override var emptyView: IEmptyView? = null
-
     override lateinit var recyclerView: RecyclerView
-
     override fun initViews() {
         swipeRefresh = chatsSwipeRefresh
         emptyView = chatsEmptyView
@@ -52,9 +45,8 @@ class ChatsListFragment : ABaseRecyclerViewFragment<ChatListItem, ChatsListAdapt
         progressLayout = chatsProgressBar
     }
 
-    override fun onLoadData(bySwipeRefresh: Boolean) {
-        presenter.loadChats(bySwipeRefresh)
+    override fun onSwipeRefreshAction() {
+        presenter.loadChats(true)
     }
-
 
 }

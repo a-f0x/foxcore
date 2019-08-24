@@ -29,9 +29,9 @@ abstract class ABaseRecyclerViewFragment<I, ADAPTER : ABaseRecyclerViewAdapter<I
 
     abstract val adapter: ADAPTER
 
-    abstract var swipeRefresh: SwipeRefreshLayout?
+    var swipeRefresh: SwipeRefreshLayout? = null
 
-    abstract var emptyView: IEmptyView?
+    var emptyView: IEmptyView? = null
 
     abstract var recyclerView: RecyclerView
 
@@ -47,13 +47,13 @@ abstract class ABaseRecyclerViewFragment<I, ADAPTER : ABaseRecyclerViewAdapter<I
         recyclerView.adapter = adapter
         swipeRefresh?.setColorSchemeResources(R.color.core_primary_color)
         swipeRefresh?.setOnRefreshListener {
-            onLoadData(true)
+            onSwipeRefreshAction()
         }
     }
 
     abstract fun initViews()
 
-    abstract fun onLoadData(bySwipeRefresh: Boolean)
+    open fun onSwipeRefreshAction() {}
 
     override fun showProgress(show: Boolean) {
         swipeRefresh?.let { sw ->
@@ -83,7 +83,7 @@ abstract class ABaseRecyclerViewFragment<I, ADAPTER : ABaseRecyclerViewAdapter<I
         updateEmptyViewVisibility()
     }
 
-    private fun updateEmptyViewVisibility() {
+    open fun updateEmptyViewVisibility() {
         val itemCount = adapter.itemCount
         emptyView?.setVisible(itemCount == 0)
     }
