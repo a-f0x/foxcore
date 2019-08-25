@@ -76,6 +76,7 @@ abstract class ABaseRecyclerViewFragment<I, ADAPTER : ABaseRecyclerViewAdapter<I
 
     override fun addItem(item: I) {
         adapter.addItem(item)
+        updateEmptyViewVisibility()
     }
 
     override fun removeItem(item: I) {
