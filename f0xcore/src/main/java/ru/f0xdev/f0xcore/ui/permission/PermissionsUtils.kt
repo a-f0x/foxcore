@@ -8,13 +8,6 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 
-const val REQUEST_WRITE_EXTERNAL_STORAGE = 99
-const val REQUEST_PERMISSION_CAMERA_AND_STORAGE = 100
-const val REQUEST_CODE_RECEIVE_SMS_PERMISSION = 101
-const val REQUEST_CODE_READ_PHONE_STATE_PERMISSION_AND_CALL_LOG = 102
-const val REQUEST_ACCESS_FINE_LOCATION = 103
-const val REQUEST_READ_AND_WRITE_CALENDAR = 104
-
 
 fun Activity.requestPermissionsSafely(
     permissions: List<String>,
