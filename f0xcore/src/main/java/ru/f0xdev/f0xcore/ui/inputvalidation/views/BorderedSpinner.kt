@@ -100,6 +100,10 @@ class BorderedSpinner<T> @JvmOverloads constructor(
             }
         }
 
-    override fun getValidationValue(): String = selectedPosition.toString()
-
+    override fun getValidationValue(): String {
+        return if (selectedPosition > 0)
+            selectedPosition.toString()
+        else
+            ""
+    }
 }
