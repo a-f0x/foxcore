@@ -39,7 +39,7 @@ class UnauthorizedErrorProcessor(
     }
 
     private fun cancelAllRequests() {
-        okHttpClient?.dispatcher()?.cancelAll()
+        okHttpClient?.dispatcher?.cancelAll()
     }
 
     private fun processAuthException(aue: AuthException) {

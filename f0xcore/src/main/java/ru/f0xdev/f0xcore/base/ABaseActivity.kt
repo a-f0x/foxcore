@@ -34,8 +34,8 @@ abstract class ABaseActivity : MvpAppCompatActivity(), BaseView, BackPressable {
         rootView = window.decorView.findViewById(android.R.id.content)
     }
 
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        when (item?.itemId) {
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
             android.R.id.home -> {
                 onBackPressed()
                 return true
