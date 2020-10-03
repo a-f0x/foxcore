@@ -22,9 +22,10 @@ val presentersModule = module {
 
     factory {
         LaunchPresenter(
-            get(defaultIErrorProcessorQualifier),
-            get(),
-            get()
+            errorProcessor = get(defaultIErrorProcessorQualifier),
+            provider = get(),
+            authManager = get(),
+            router = get()
         )
     }
 

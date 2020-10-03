@@ -21,13 +21,31 @@ interface BaseView : MvpView {
 
     fun showProgress(show: Boolean)
 
-    fun showErrorWithRetryAndCustomText(action: () -> Unit, @StringRes messageId: Int, @StringRes buttonText: Int)
+    @StateStrategyType(OneExecutionStateStrategy::class)
+    fun showErrorWithRetryAndCustomText(
+        action: () -> Unit,
+        @StringRes titleId: Int,
+        @StringRes messageId: Int,
+        @StringRes buttonText: Int
+    )
 
-    fun showErrorWithRetryAndCustomText(action: () -> Unit, messageText: String, @StringRes buttonText: Int)
+
+    @StateStrategyType(OneExecutionStateStrategy::class)
+    fun showErrorWithRetryAndCustomText(
+        action: () -> Unit,
+        titleText: String,
+        messageText: String,
+        buttonText: String
+    )
+
 
     fun showMessageWithAction(message: String, actionText: String, listener: View.OnClickListener)
 
-    fun showMessageWithAction(@StringRes messageId: Int, @StringRes actionTextId: Int, listener: View.OnClickListener)
+    fun showMessageWithAction(
+        @StringRes messageId: Int,
+        @StringRes actionTextId: Int,
+        listener: View.OnClickListener
+    )
 
     fun showValidationError(details: Map<String, List<String>>)
 }

@@ -11,4 +11,5 @@ class ErrorView @JvmOverloads constructor(
     override val rView: View
         get() = View.inflate(context, R.layout.error_view, this)
 
+
 }

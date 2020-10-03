@@ -21,6 +21,7 @@ class App : MultiDexApplication(), HasComponentDependencies, KoinComponent {
             androidContext(this@App)
             modules(
                 listOf(
+                    navigationModule,
                     commonModule,
                     networkModule("https://reqres.in"),
                     accountsModule("https://reqres.in"),

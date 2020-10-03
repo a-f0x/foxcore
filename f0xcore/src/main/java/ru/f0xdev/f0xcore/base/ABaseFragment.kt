@@ -10,12 +10,13 @@ import ru.f0xdev.f0xcore.util.getValidatableViews
 import ru.f0xdev.f0xcore.util.hideKeyboard
 import ru.f0xdev.f0xcore.util.visible
 
-abstract class ABaseFragment : MvpAppCompatFragment(), BaseView {
+abstract class ABaseFragment : MvpAppCompatFragment(), BaseView, BackPressableView {
 
     protected lateinit var fragmentContext: Context
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        fragmentContext = context ?: throw IllegalStateException("Context is null for ${javaClass.canonicalName} $this")
+        fragmentContext = context
+            ?: throw IllegalStateException("Context is null for ${javaClass.canonicalName} $this")
         super.onCreate(savedInstanceState)
     }
 
@@ -28,6 +29,7 @@ abstract class ABaseFragment : MvpAppCompatFragment(), BaseView {
     }
 
     open var progressLayout: View? = activity?.findViewById(R.id.progressLayout)
+
     open var errorView: IErrorView? = null
 
     override fun showProgress(show: Boolean) {
@@ -106,28 +108,46 @@ abstract class ABaseFragment : MvpAppCompatFragment(), BaseView {
         }
     }
 
-    override fun showMessageWithAction(messageId: Int, actionTextId: Int, listener: View.OnClickListener) {
+    override fun showMessageWithAction(
+        messageId: Int,
+        actionTextId: Int,
+        listener: View.OnClickListener
+    ) {
         hideKeyboard()
         showMessageWithAction(getString(messageId), getString(actionTextId), listener)
     }
 
-    override fun showErrorWithRetryAndCustomText(action: () -> Unit, messageId: Int, buttonText: Int) {
-        hideKeyboard()
-        errorView?.let {
+    override fun showErrorWithRetryAndCustomText(
+        action: () -> Unit,
+        titleId: Int,
+        messageId: Int,
+        buttonText: Int
+    ) {
+        errorView()?.let {
+            hideKeyboard()
+            it.setErrorTitle(titleId)
             it.setErrorText(messageId)
             it.setButtonRetryText(buttonText)
             it.onRetryAction(action)
             it.visible(true)
+
         }
     }
 
-    override fun showErrorWithRetryAndCustomText(action: () -> Unit, messageText: String, @StringRes buttonText: Int) {
-        hideKeyboard()
-        errorView?.let {
+    override fun showErrorWithRetryAndCustomText(
+        action: () -> Unit,
+        titleText: String,
+        messageText: String,
+        buttonText: String
+    ) {
+        errorView()?.let {
+            hideKeyboard()
+            it.setErrorTitle(titleText)
             it.setErrorText(messageText)
             it.setButtonRetryText(buttonText)
             it.onRetryAction(action)
             it.visible(true)
+            return
         }
     }
 
@@ -143,6 +163,12 @@ abstract class ABaseFragment : MvpAppCompatFragment(), BaseView {
 
     private fun hideKeyboard() {
         activity?.hideKeyboard()
+    }
+
+    open fun errorView(): IErrorView? = null
+
+    override fun onBackPressed(): Boolean {
+        return false
     }
 
 }

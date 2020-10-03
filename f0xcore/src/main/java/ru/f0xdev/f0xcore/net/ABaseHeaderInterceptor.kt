@@ -14,8 +14,8 @@ abstract class ABaseHeaderInterceptor(
 
         val response = proceedRequest(chain, original)
         if (!response.isSuccessful) {
-            val code = response.code()
-            val errorBody = response.body().toString()
+            val code = response.code
+            val errorBody = response.body.toString()
             val errorProcessor = errorProcessors[code]
             if (errorProcessor != null && errorProcessor.processRequestWithError(errorBody, code)) {
                 return proceedRequest(chain, original)

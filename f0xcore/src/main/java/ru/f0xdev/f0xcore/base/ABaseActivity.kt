@@ -5,21 +5,33 @@ import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
+import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
+import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
 import com.google.android.material.snackbar.Snackbar
 import moxy.MvpAppCompatActivity
 import ru.f0xdev.f0xcore.BuildConfig
 import ru.f0xdev.f0xcore.R
+import ru.f0xdev.f0xcore.base.navigation.ANavigationErrorViewWithToolBar
 import ru.f0xdev.f0xcore.util.getValidatableViews
 import ru.f0xdev.f0xcore.util.hideKeyboard
 import ru.f0xdev.f0xcore.util.visible
 
-abstract class ABaseActivity : MvpAppCompatActivity(), BaseView, BackPressable {
+abstract class ABaseActivity : MvpAppCompatActivity(), BaseView {
 
     private var rootView: View? = null
 
-    override var listener: OnBackPressListener? = null
+    override fun onBackPressed() {
+        val availableBackPressableView = supportFragmentManager.fragments
+            .lastOrNull { it.isAdded } as? BackPressableView
+
+        availableBackPressableView?.let {
+            if (it.onBackPressed())
+                return
+        }
+        super.onBackPressed()
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         if (!BuildConfig.DEBUG) {
@@ -34,8 +46,14 @@ abstract class ABaseActivity : MvpAppCompatActivity(), BaseView, BackPressable {
         rootView = window.decorView.findViewById(android.R.id.content)
     }
 
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        when (item?.itemId) {
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        supportFragmentManager.fragments.forEach {
+            if (it.isAdded && it.hasOptionsMenu()) {
+                return false
+            }
+        }
+
+        when (item.itemId) {
             android.R.id.home -> {
                 onBackPressed()
                 return true
@@ -44,7 +62,7 @@ abstract class ABaseActivity : MvpAppCompatActivity(), BaseView, BackPressable {
         return super.onOptionsItemSelected(item)
     }
 
-    open fun progressLayout(): View? = findViewById(R.id.progressLayout)
+
 
     override fun showProgress(show: Boolean) {
         progressLayout()?.let {
@@ -53,9 +71,6 @@ abstract class ABaseActivity : MvpAppCompatActivity(), BaseView, BackPressable {
             it.visible(show)
         }
     }
-
-    open fun errorView(): IErrorView? = null
-
     override fun showNetworkError(action: (() -> Unit)?) {
         hideKeyboard()
         action?.let { a ->
@@ -76,6 +91,8 @@ abstract class ABaseActivity : MvpAppCompatActivity(), BaseView, BackPressable {
             errorView()?.let { ev ->
                 ev.setErrorText(R.string.unknown_error_text)
                 ev.onRetryAction(a)
+                setNavigationToolBar(ev.toolBar, false)
+                supportActionBar?.setDisplayHomeAsUpEnabled(false)
                 ev.visible(true)
                 return
             }
@@ -84,14 +101,20 @@ abstract class ABaseActivity : MvpAppCompatActivity(), BaseView, BackPressable {
     }
 
     override fun showMessage(message: String) {
+        hideKeyboard()
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 
     override fun showMessage(@StringRes messageId: Int) {
+        hideKeyboard()
         showMessage(this.getString(messageId))
     }
 
-    override fun showMessageWithAction(message: String, actionText: String, listener: View.OnClickListener) {
+    override fun showMessageWithAction(
+        message: String,
+        actionText: String,
+        listener: View.OnClickListener
+    ) {
         hideKeyboard()
         rootView?.let {
             val snackBar = Snackbar.make(it, message, Snackbar.LENGTH_LONG).apply {
@@ -103,40 +126,47 @@ abstract class ABaseActivity : MvpAppCompatActivity(), BaseView, BackPressable {
         } ?: Toast.makeText(baseContext, message, Toast.LENGTH_SHORT).show()
     }
 
-    override fun showMessageWithAction(messageId: Int, actionTextId: Int, listener: View.OnClickListener) {
+
+    override fun showMessageWithAction(
+        messageId: Int,
+        actionTextId: Int,
+        listener: View.OnClickListener
+    ) {
         showMessageWithAction(getString(messageId), getString(actionTextId), listener)
     }
 
-    override fun showErrorWithRetryAndCustomText(action: () -> Unit, @StringRes messageId: Int, buttonText: Int) {
+    override fun showErrorWithRetryAndCustomText(
+        action: () -> Unit,
+        titleId: Int,
+        messageId: Int,
+        buttonText: Int
+    ) {
+        hideKeyboard()
         errorView()?.let {
+            it.setErrorTitle(titleId)
             it.setErrorText(messageId)
             it.setButtonRetryText(buttonText)
             it.onRetryAction(action)
+            setNavigationToolBar(it.toolBar, false)
             it.visible(true)
         }
     }
 
-    override fun showErrorWithRetryAndCustomText(action: () -> Unit, messageText: String, @StringRes buttonText: Int) {
+    override fun showErrorWithRetryAndCustomText(
+        action: () -> Unit,
+        titleText: String,
+        messageText: String,
+        buttonText: String
+    ) {
+        hideKeyboard()
         errorView()?.let {
+            it.setErrorTitle(titleText)
             it.setErrorText(messageText)
             it.setButtonRetryText(buttonText)
             it.onRetryAction(action)
+            setNavigationToolBar(it.toolBar, false)
             it.visible(true)
         }
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        listener = null
-    }
-
-    override fun onBackPressed() {
-        listener?.let {
-            if (!it.onBackButtonPressed()) {
-                return
-            }
-        }
-        super.onBackPressed()
     }
 
     override fun showValidationError(details: Map<String, List<String>>) {
@@ -148,5 +178,28 @@ abstract class ABaseActivity : MvpAppCompatActivity(), BaseView, BackPressable {
                 }
         }
     }
+
+
+    fun setNavigationToolBar(
+        toolbar: Toolbar,
+        showBack: Boolean,
+        @DrawableRes backIndicatorResId: Int = -1
+    ) {
+        setSupportActionBar(toolbar)
+        supportActionBar?.apply {
+            setDisplayHomeAsUpEnabled(showBack)
+            if (backIndicatorResId != -1)
+                setHomeAsUpIndicator(
+                    ContextCompat.getDrawable(
+                        this@ABaseActivity,
+                        backIndicatorResId
+                    )
+                )
+        }
+    }
+
+    open fun errorView(): ANavigationErrorViewWithToolBar? = null
+
+    open fun progressLayout(): View? = findViewById(R.id.progressLayout)
 
 }

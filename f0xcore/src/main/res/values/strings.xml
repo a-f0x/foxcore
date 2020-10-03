@@ -45,4 +45,9 @@
     <string name="error_something_went_wrong">Something went wrong, try later</string>
 
     <string name="account_type">fox_core_account</string>
+
+    <string name="retry_text">Retry button text</string>
+    <string name="error_header_text">Error header text</string>
+    <string name="error_description_text">Error description text</string>
+    <string name="error">Error</string>
 </resources>
