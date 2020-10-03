@@ -10,6 +10,4 @@ abstract class ABaseRouterOnUI(private val context: Context) {
             block()
         }
     }
-
-
 }
