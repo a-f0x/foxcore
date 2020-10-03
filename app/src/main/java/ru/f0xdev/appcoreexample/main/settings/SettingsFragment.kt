@@ -86,11 +86,8 @@ class SettingsFragment : ABaseFragment(), SettingsView, NavigationView.OnNavigat
             if (it)
                 presenter.logout()
         }
-
         fragmentManager?.also {
             d.show(it, "")
         }
-
     }
-
 }

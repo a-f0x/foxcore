@@ -14,16 +14,24 @@ abstract class BaseErrorView @JvmOverloads constructor(
 ) : LinearLayout(context, attrs, defStyleAttr), IErrorView {
 
     abstract val rView: View
-    private var tvErrorTitle: TextView = rView.findViewById(R.id.tvErrorTitle)
-    private var tvErrorMessage: TextView = rView.findViewById(R.id.tvErrorMessage)
+    private var titleView: TextView = rView.findViewById(R.id.tvErrorView)
+    private var textView: TextView = rView.findViewById(R.id.text)
     private var btnRetry: Button = rView.findViewById(R.id.btnRetry)
 
     override fun setErrorText(text: String) {
-        tvErrorMessage.text = text
+        textView.text = text
     }
 
     override fun setErrorText(textId: Int) {
-        tvErrorMessage.setText(textId)
+        textView.setText(textId)
+    }
+
+    override fun setErrorTitle(textId: Int) {
+        titleView.setText(textId)
+    }
+
+    override fun setErrorTitle(text: String) {
+        titleView.text = text
     }
 
     override fun onRetryAction(action: () -> Unit) {
@@ -44,13 +52,4 @@ abstract class BaseErrorView @JvmOverloads constructor(
     override fun visible(visible: Boolean) {
         rView.visible(visible)
     }
-
-    override fun setErrorTitle(textId: Int) {
-        tvErrorTitle.setText(textId)
-    }
-
-    override fun setErrorTitle(text: String) {
-        tvErrorTitle.text = text
-    }
-
 }

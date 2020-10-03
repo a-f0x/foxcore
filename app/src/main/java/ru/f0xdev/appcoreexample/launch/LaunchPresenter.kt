@@ -1,8 +1,10 @@
 package ru.f0xdev.appcoreexample.launch
 
 import moxy.InjectViewState
+import ru.f0xdev.appcoreexample.routing.IAppRouter
 import ru.f0xdev.f0xcore.auth.IAuthEventListener
 import ru.f0xdev.f0xcore.auth.IAuthManager
+import ru.f0xdev.f0xcore.base.BaseView
 import ru.f0xdev.f0xcore.presentation.errors.IErrorProcessor
 import ru.f0xdev.f0xcore.presentation.presenters.ABaseCoroutinePresenter
 import ru.f0xdev.f0xcore.providers.ICoroutineContextProvider
@@ -11,27 +13,29 @@ import ru.f0xdev.f0xcore.providers.ICoroutineContextProvider
 class LaunchPresenter(
     errorProcessor: IErrorProcessor,
     provider: ICoroutineContextProvider,
-    private val authManager: IAuthManager
-) : ABaseCoroutinePresenter<MainView>(errorProcessor, provider, null) {
+    private val authManager: IAuthManager,
+    private val router: IAppRouter
+) : ABaseCoroutinePresenter<BaseView>(errorProcessor, provider, null) {
 
     private val authListener = object : IAuthEventListener {
         override fun onAccessTokenUpdated() {}
 
         override fun onLogin() {
-            viewState.showMainFragment()
+            router.showMainScreen()
         }
 
         override fun onLogout() {
-            viewState.showAuthFragment()
+            router.showAuthScreen()
+
         }
     }
 
     override fun onFirstViewAttach() {
         authManager.addListener(authListener)
         if (authManager.isAuthenticated())
-            viewState.showMainFragment()
+            router.showMainScreen()
         else
-            viewState.showAuthFragment()
+            router.showAuthScreen()
     }
 
     override fun onDestroy() {

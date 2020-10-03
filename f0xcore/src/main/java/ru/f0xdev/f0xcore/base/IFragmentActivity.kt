@@ -10,7 +10,7 @@ interface IFragmentActivity {
 
     val fragmentContainerId: Int
 
-    fun switchFragmentWithCustomAmination(
+    fun switchFragmentWithCustomAnimation(
         fragment: Fragment,
         tag: String?,
         addToBackStack: Boolean = false,
@@ -25,7 +25,7 @@ interface IFragmentActivity {
         executeTransaction(fragmentTransaction, activity, fragment, tag, clearTopFragments, addToBackStack)
     }
 
-    fun switchFragmentWithDefaultAmination(
+    fun switchFragmentWithDefaultAnimation(
         fragment: Fragment,
         tag: String?,
         addToBackStack: Boolean = false,
@@ -34,10 +34,17 @@ interface IFragmentActivity {
     ) {
         val fragmentTransaction = activity.supportFragmentManager
             .beginTransaction()
-        executeTransaction(fragmentTransaction, activity, fragment, tag, clearTopFragments, addToBackStack)
+        executeTransaction(
+            fragmentTransaction,
+            activity,
+            fragment,
+            tag,
+            clearTopFragments,
+            addToBackStack
+        )
     }
 
-    fun switchFragmentWithoutAmination(
+    fun switchFragmentWithoutAnimation(
         fragment: Fragment,
         tag: String?,
         addToBackStack: Boolean = false,
@@ -47,7 +54,14 @@ interface IFragmentActivity {
         val fragmentTransaction = activity.supportFragmentManager
             .beginTransaction()
             .setTransition(FragmentTransaction.TRANSIT_NONE)
-        executeTransaction(fragmentTransaction, activity, fragment, tag, clearTopFragments, addToBackStack)
+        executeTransaction(
+            fragmentTransaction,
+            activity,
+            fragment,
+            tag,
+            clearTopFragments,
+            addToBackStack
+        )
     }
 
     private fun executeTransaction(

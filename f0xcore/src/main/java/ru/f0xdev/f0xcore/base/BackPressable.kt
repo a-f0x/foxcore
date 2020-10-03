@@ -1,15 +1,13 @@
 package ru.f0xdev.f0xcore.base
 
-interface BackPressable {
-    var listener: OnBackPressListener?
-}
-
-interface OnBackPressListener {
+/**
+ * Делегат обработки кнопки back
+ *
+ * */
+interface BackPressableView {
     /**
-     * Листенер на фрагменты в которых обрабатывается нажатие back button
-     * @return true если можно обработать выше в активити либо рутовых фрагментменеджерах
-     * @return false если фрагмент сам обработает нажатие
-     *
+     * @return true - вьюха сама обработала сценарий бека и вышестояшей вью (активити или парент фрагмент) не нужно вызывать суперовый метд
+     * false - ну тут все наоборот, делегируем вышестоящей вью обработку бека
      * */
-    fun onBackButtonPressed(): Boolean
+    fun onBackPressed(): Boolean
 }
