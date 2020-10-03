@@ -14,7 +14,7 @@ abstract class BaseErrorView @JvmOverloads constructor(
 ) : LinearLayout(context, attrs, defStyleAttr), IErrorView {
 
     abstract val rView: View
-    private var titleView: TextView = rView.findViewById(R.id.tvErrorView)
+    private var titleView: TextView = rView.findViewById(R.id.tvErrorTitle)
     private var textView: TextView = rView.findViewById(R.id.text)
     private var btnRetry: Button = rView.findViewById(R.id.btnRetry)
 
